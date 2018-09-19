@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef">
+
+
+    <LinearLayout
+        android:padding="5dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#efefef"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:text="征信类型:"
+                android:textSize="16sp"/>
+
+
+            <RadioGroup
+                android:id="@+id/rg_isnew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="24dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/zicha"/>
+
+                <RadioButton
+                    android:id="@+id/rb_own"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView3"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:padding="15dp"
+                    android:text="自查"
+                    android:textColor="#808080"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/rb_old_car"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toStartOf="@+id/rb_old_car"
+                    android:src="@drawable/daicha"/>
+
+                <RadioButton
+                    android:id="@+id/rb_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:padding="15dp"
+                    android:text="代查"
+                    android:textColor="#808080"
+                    />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu1_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="客户姓名"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_customer_name"
+                style="@style/EditText_input"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.8"
+                />
+
+            <ImageView
+                android:id="@+id/cemera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.4"
+                android:src="@drawable/zhaoxiang"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu1_02"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="证件类型"
+                />
+
+            <TextView
+                android:id="@+id/tv_certificate_type"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu1_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="证件号码"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_certificate_num"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu1_04"/>
+
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/TextView_left"
+                android:text="手机号码"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_phone_num"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu1_05"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="家庭地址"
+                />
+
+            <TextView
+                android:id="@+id/tv_home"
+                style="@style/TextView_choose"
+                android:hint="选择地区"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_car_addr"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="详细地址"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_full_addr"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_next"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/next"
+        android:enabled="false"/>
+</RelativeLayout>

@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical"
+    tools:context="com.feifandaiyu.feifan.activity.personalloan.Cost1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="类型:"
+                android:textSize="16sp"/>
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="24dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <RadioButton
+                    android:id="@+id/rb_zhizu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView3"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:padding="15dp"
+                    android:text="直租"
+                    android:textColor="#808080"/>
+
+                <RadioButton
+                    android:id="@+id/rb_huizu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="15dp"
+                    android:text="回租"
+                    android:textColor="#808080"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_yizudaigou"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:padding="15dp"
+                    android:text="以租代购"
+                    android:textColor="#808080"
+                    />
+
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost1"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="发票价"
+                />
+
+            <TextView
+                android:id="@+id/tv_fapiao"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_vprice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost5"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="评估价"
+                />
+
+            <TextView
+                android:id="@+id/tv_vprice"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost3"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="贷款额"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_daikuane"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost2"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="GPS价"
+                />
+
+            <TextView
+                android:id="@+id/tv_gps_price"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost3"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="商险"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_shangxian"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost4"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="强险"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_qiangxian"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost5"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="购置税"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_gouzhishui"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost7"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="贷款期数"
+                />
+
+            <TextView
+                android:id="@+id/tv_qishu"
+                style="@style/TextView_choose"
+                android:hint="请选择"
+                />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost8"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="利息/利率"
+                />
+
+            <TextView
+                android:id="@+id/tv_lilv"
+                style="@style/TextView_choose"
+                android:hint="请选择"
+                />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost11"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="利息差"
+                />
+
+            <TextView
+                android:id="@+id/tv_lixicha"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost9"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.70"
+                android:text="月供金额"
+                />
+
+            <TextView
+                android:id="@+id/tv_yuegong"
+                style="@style/TextView_choose"
+                android:layout_weight="1.12"
+                android:hint="待计算"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost6"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.70"
+                android:text="实际到手金额"
+                />
+
+            <TextView
+                android:id="@+id/tv_daikuane"
+                style="@style/TextView_choose"
+                android:layout_weight="1.12"
+                android:hint="待计算"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

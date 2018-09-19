@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#efefef"
+    android:padding="10dp"
+    tools:context="com.feifandaiyu.feifan.activity.personalloan.Chuli1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="当前节点"
+                />
+
+            <TextView
+                android:id="@+id/tv_chuli_who"
+                style="@style/TextView_choose"
+                android:text="请显示"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/textView16"
+                style="@style/TextView_left"
+                android:text="处理时间"/>
+
+            <TextView
+                android:id="@+id/tv_chuli_time"
+                style="@style/TextView_choose"
+                android:text="请显示"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp">
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="处理意见"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="15sp"
+            android:textColor="#282727"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_chuli_result"
+            android:background="@color/white"
+            android:hint="请显示"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

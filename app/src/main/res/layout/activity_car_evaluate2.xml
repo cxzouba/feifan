@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_cartype"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#efefef"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.74"
+                android:text="品牌车型车系"
+                />
+
+            <TextView
+                android:id="@+id/tv_car_type"
+                style="@style/TextView_choose"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:singleLine="true"
+                android:text="请显示"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_car_bank"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/car1"/>
+
+            <TextView
+                android:id="@+id/tv_car_bank"
+                style="@style/TextView_left"
+                android:text="车行"
+                />
+
+            <TextView
+                android:id="@+id/tv_choose_bank"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_02"/>
+
+            <TextView
+                android:id="@+id/textView12"
+                style="@style/TextView_left"
+                android:text="车架号"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_car_vin"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.75"
+                android:text="首次上牌时间"
+                />
+
+            <TextView
+                android:id="@+id/tv_run_time"
+                style="@style/TextView_choose"
+                android:layout_weight="1.0"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_04"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="行驶里程"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_run_distance"
+                style="@style/EditText_input"
+                android:hint="公里"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_05"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="车辆所在地"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_car_location"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_06"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="指导价"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_zhidao_price"
+                style="@style/EditText_input"
+                android:hint="元"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_07"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="发票价"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_shiji_price"
+                style="@style/EditText_input"
+                android:hint="元"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_08"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="颜色"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_car_color"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_09"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="车牌号"
+                />
+
+            <TextView
+                android:id="@+id/et_chepai_num"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <!--<android.inputmethodservice.KeyboardView-->
+            <!--android:id="@+id/keyboard_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#dfdfdf"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:keyBackground="@drawable/btn_keyboard_key"-->
+            <!--android:keyTextColor="#000"-->
+            <!--android:keyTextSize="16sp"-->
+            <!--android:paddingBottom="8dp"-->
+            <!--android:paddingTop="8dp"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="变速类型:"
+                android:textSize="16sp"/>
+
+
+            <RadioGroup
+                android:id="@+id/rg_isauto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="25dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/man_speed"/>
+
+                <RadioButton
+
+                    android:id="@+id/rb_man_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView5"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/imageView4"
+                    android:padding="15dp"
+                    android:text="手动"
+                    android:textColor="#808080"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/auto_speed"/>
+
+                <RadioButton
+                    android:id="@+id/rb_auto_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:padding="15dp"
+                    android:text="自动"
+                    android:textColor="#808080"/>
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_red"
+            android:enabled="false"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+</ScrollView>

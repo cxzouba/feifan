@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:padding="7dp"
+            android:text="法人信息"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi1_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="法人姓名"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_legal_name"
+                style="@style/EditText_input"
+
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi1_02"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="法人身份证"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_certificate_num"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi1_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="手机号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_legal_phone_num"
+                style="@style/EditText_input"
+                android:hint="请输入"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:padding="7dp"
+            android:text="购车类型"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/rg_isnew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/new_car"/>
+
+                <RadioButton
+                    android:id="@+id/rb_new_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView3"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:checked="true"
+                    android:padding="15dp"
+                    android:text="新车"
+                    android:textColor="#808080"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_alignBottom="@+id/rb_old_car"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toStartOf="@+id/rb_old_car"
+                    android:src="@drawable/old_car"/>
+
+                <RadioButton
+                    android:id="@+id/rb_old_car"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:padding="15dp"
+                    android:text="二手车"
+                    android:textColor="#808080"
+                    />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:padding="7dp"
+            android:text="企业信息"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="企业名称"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_company_name"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/ll_team_certificate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_02"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="1.1"
+                android:text="统一社会信用代码"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_code_name"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="企业所在地"
+                />
+
+            <TextView
+                android:id="@+id/tv_belong_home"
+                style="@style/TextView_choose"
+                android:hint="选择地区"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_04"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="所在地地址"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_belong_addr"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_05"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="企业经营地"
+                />
+
+            <TextView
+                android:id="@+id/tv_location_home"
+                style="@style/TextView_choose"
+                android:hint="选择地区"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_06"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="经营地地址"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_location_addr"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:layout_width="10dp"
+                android:src="@drawable/wanshanxinxi2_07"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:layout_weight="0.8"
+                android:text="联系电话"
+                />
+
+            <EditText
+                android:id="@+id/et_area_code"
+                style="@style/TextView_left"
+                android:layout_weight="0.6"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="区号"
+                android:inputType="number"
+                android:textColorHint="#c2c1c1"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.28"
+                android:gravity="center"
+                android:text="—"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_company_num"
+                style="@style/EditText_input"
+                android:layout_weight="1.0"
+                android:hint="手机或电话号"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_08"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="企业性质"
+                />
+
+            <TextView
+                android:id="@+id/et_company_type"
+                style="@style/TextView_choose"
+                />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/wanshanxinxi2_09"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="从事行业"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_do_what"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/rl_person"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#efefef"
+              android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar_bg"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"
+                android:visibility="visible"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_daipinggu"
+                    android:layout_width="97dp"
+                    android:layout_height="33dp"
+                    android:clickable="true"
+                    android:src="@drawable/xinche"/>
+
+                <ImageView
+                    android:id="@+id/iv_yipinggu"
+                    android:layout_width="97dp"
+                    android:layout_height="33dp"
+                    android:clickable="true"
+                    android:src="@drawable/ershouche"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/add_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:padding="8dp"
+                android:text="添加车商"
+                android:textColor="@drawable/toolbar_next"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <!--android:id="@+id/refresh_personal"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="#fff"
+        app:srlEnableHeaderTranslationContent="true"
+        app:srlEnableLoadmore="false"
+        app:srlPrimaryColor="#333">
+
+        <com.scwang.smartrefresh.header.StoreHouseHeader
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:shhLineWidth="2dp"
+            app:shhText="FeiFan"/>
+
+        <ListView
+            android:id="@+id/lv_personaloan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:longClickable="true">
+
+        </ListView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+</LinearLayout>

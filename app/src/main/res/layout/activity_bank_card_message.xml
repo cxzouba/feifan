@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#efefef"
+              android:orientation="vertical"
+              android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bankcard1"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text="持卡人姓名"
+            />
+
+        <TextView
+            android:id="@+id/et_cardholder_name"
+            style="@style/TextView_choose"
+            android:layout_marginRight="10dp"
+            android:text="请显示"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bankcard2"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:layout_weight="0.60"
+            android:text="持卡人卡号"/>
+
+        <com.example.library.BandCardEditText
+            android:id="@+id/et_cardholder_num"
+            style="@style/EditText_input"
+            android:layout_marginRight="0dp"
+            android:hint="请输入"
+            android:inputType="number"/>
+
+        <ImageView
+            android:id="@+id/cemera1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/zhaoxiang"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bankcard1"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text="选择银行"
+            />
+
+        <TextView
+            android:id="@+id/tv_bank"
+            style="@style/TextView_choose"
+            android:layout_marginRight="10dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bankcard3"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text="开户行全称"
+            />
+
+        <com.chaychan.viewlib.PowerfulEditText
+            android:id="@+id/et_bank_name"
+            style="@style/EditText_input"
+            android:layout_marginRight="10dp"
+            android:hint="请输入"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/lianxiren_04"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text=" 预留手机号"
+            />
+
+        <com.chaychan.viewlib.PowerfulEditText
+            android:id="@+id/et_tel"
+            style="@style/EditText_input"
+            android:layout_marginRight="10dp"
+            android:hint="请输入"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bankcard4"
+            />
+
+        <TextView
+            style="@style/TextView_left"
+            android:text=" 联行号"
+            />
+
+        <com.chaychan.viewlib.PowerfulEditText
+            android:id="@+id/et_lianhang"
+            style="@style/EditText_input"
+            android:layout_marginRight="10dp"
+            android:hint="请输入"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+</LinearLayout>

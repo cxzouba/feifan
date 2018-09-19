@@ -1,0 +1,128 @@
+[
+  {
+    "areaId": 20138,
+    "areaName": "直营分公司",
+    "datavalue": "400",
+    "cities": [
+      {
+        "areaId": 20130,
+        "areaName": "省直分公司",
+        "datavalue": "401",
+        "counties": []
+      },
+      {
+        "areaId": 20129,
+        "areaName": "市直分公司",
+        "datavalue": "402",
+        "counties": []
+      },
+      {
+        "areaId": 20128,
+        "areaName": "一手客户",
+        "datavalue": "403",
+        "counties": []
+      }
+    ]
+  },
+  {
+    "areaId": 20139,
+    "areaName": "转介绍",
+    "datavalue": "300",
+    "cities": [
+      {
+        "areaId": 20132,
+        "areaName": "汽车租赁",
+        "datavalue": "301",
+        "counties": []
+      },
+      {
+        "areaId": 20131,
+        "areaName": "奉融",
+        "datavalue": "302",
+        "counties": [
+          {
+            "areaId": 20124,
+            "areaName": "老客户转介绍",
+            "datavalue": "302.1"
+          },
+          {
+            "areaId": 20123,
+            "areaName": "朋友／亲属推荐",
+            "datavalue": "302.2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "areaId": 20140,
+    "areaName": "中介",
+    "datavalue": "200",
+    "cities": [
+      {
+        "areaId": 20135,
+        "areaName": "小额贷款",
+        "datavalue": "201",
+        "counties": []
+      },
+      {
+        "areaId": 20134,
+        "areaName": "典当行",
+        "datavalue": "202",
+        "counties": []
+      },
+      {
+        "areaId": 20133,
+        "areaName": "同行业",
+        "datavalue": "203",
+        "counties": []
+      }
+    ]
+  },
+  {
+    "areaId": 20141,
+    "areaName": "车商",
+    "datavalue": "100",
+    "cities": [
+      {
+        "areaId": 20137,
+        "areaName": "新车",
+        "datavalue": "101",
+        "counties": [
+          {
+            "areaId": 20127,
+            "areaName": "4s店",
+            "datavalue": "101.1"
+          },
+          {
+            "areaId": 20126,
+            "areaName": "汽贸",
+            "datavalue": "101.2"
+          },
+          {
+            "areaId": 20125,
+            "areaName": "二网",
+            "datavalue": "101.3"
+          }
+        ]
+      },
+      {
+        "areaId": 20136,
+        "areaName": "二手车",
+        "datavalue": "102",
+        "counties": [
+          {
+            "areaId": 20143,
+            "areaName": "车行",
+            "datavalue": "102.2"
+          },
+          {
+            "areaId": 20142,
+            "areaName": "电商",
+            "datavalue": "102.1"
+          }
+        ]
+      }
+    ]
+  }
+]

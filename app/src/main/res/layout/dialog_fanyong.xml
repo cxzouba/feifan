@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#efefef"
+    android:orientation="vertical"
+    tools:context="com.feifandaiyu.feifan.activity.personalloan.Cost1Activity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/ll_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/zhengxintubiao_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="收款人"
+                />
+
+            <TextView
+                android:id="@+id/ff_name"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost3"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="贷款额"
+                />
+
+            <TextView
+                android:id="@+id/ff_daikuane"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost2"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="GPS价"
+                />
+
+            <TextView
+                android:id="@+id/tv_gps_price"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost11"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="返点比例"
+                />
+
+            <TextView
+                android:id="@+id/ff_bili"
+                style="@style/TextView_choose"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cost6"
+                />
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.70"
+                android:text="返佣金额"
+                />
+
+            <TextView
+                android:id="@+id/ff_fanyong"
+                style="@style/TextView_choose"
+                android:layout_weight="1.12"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/zhengxintubiao_04"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="收款账号"
+                />
+
+            <TextView
+                android:id="@+id/ff_zhanghao"
+                style="@style/TextView_choose"
+                android:layout_weight="1.12"
+                android:hint="请显示"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>

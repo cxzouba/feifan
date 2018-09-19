@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FFEC801A</color>
+    <color name="colorPrimaryDark">#19a5f5</color>
+    <color name="colorAccent">#00aefe</color>
+    <color name="colorMyBlue">#1BC8FF</color>
+    <color name="bottombarcolor">#f6f6f6</color>
+    <color name="activecolor">#00aefe</color>
+    <color name="inactivecolor">#bbbbbb</color>
+    <color name="line">#d7d7d7</color>
+    <color name="red">#ea655c</color>
+    <color name="white">#ffffff</color>
+    <color name="green">#43a338</color>
+    <color name="myGreen">#aaf86e</color>
+    <color name="myRed">#f27085</color>
+
+    <color name="msg">#FF367DF6</color>
+
+    <color name="item_bg_pressed">#e4e3e3</color>
+    <color name="item_bg_normal">#ffffff</color>
+
+
+    <color name="popup_bg">#8f000000</color>
+    <color name="line_bg">#CDCDCD</color>
+    <color name="tv_bg">#FF2D3F5E</color>
+    <color name="list_divider_line">#e7e7e7</color>
+
+    <color name="Black4">#121415</color>
+
+    <color name="login_title">#CAF9F9F9</color>
+
+    <color name="notice_title">#FF666666</color>
+
+    <color name="md_grey_800">#424242</color>
+
+</resources>

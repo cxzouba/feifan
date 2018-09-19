@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#efefef"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_02"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="发动机号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_fadongji"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="车辆类型"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_cartype"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_04"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/TextView_left"
+                android:text="国产／进口"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_guochan"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_07"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="核定载客"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_heding"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_08"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="排量"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_pailiang"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_09"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="功率"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_gonglu"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_10"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="燃料种类"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_fire_type"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_11"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="出厂日期"
+                />
+
+            <TextView
+                android:id="@+id/tv_chuchang_time"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_12"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:layout_weight="0.75"
+                android:text="初次登记日期"
+                />
+
+            <TextView
+                android:id="@+id/tv_dengji_time"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_13"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="已使用年限"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_use_year"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_15"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:layout_weight="0.75"
+                android:text="维修保养情况"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_weixiu"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_16"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="现时状态"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_zhuangtai"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_17"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:text="新车重置价"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_chongzhi"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_18"/>
+
+            <TextView
+
+                android:id="@+id/textView14"
+                style="@style/TextView_left"
+                android:text="成新率"/>
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_chengxinlv"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_19"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:layout_weight="0.75"
+                android:text="现在市场价格"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_shichang"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_20"/>
+
+            <TextView
+
+                style="@style/TextView_left"
+                android:layout_weight="0.75"
+                android:text="鉴定评估目的"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_mudi"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginBottom="5dp"
+                android:text="结构特点："/>
+
+            <EditText
+                android:id="@+id/et_jiegou"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/item_bg"
+                android:gravity="top"
+                android:hint="请输入"
+                android:textColor="#b0afaf"
+                android:textSize="14sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginBottom="5dp"
+                android:text="现时技术情况："/>
+
+
+            <EditText
+                android:id="@+id/et_jishu"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/item_bg"
+                android:gravity="top"
+                android:hint="请输入:"
+                android:textColor="#b0afaf"
+                android:textSize="14sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginBottom="5dp"
+                android:text="备注："/>
+
+            <EditText
+                android:id="@+id/et_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/item_bg"
+                android:gravity="top"
+                android:hint="请输入:"
+                android:textColor="#b0afaf"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+

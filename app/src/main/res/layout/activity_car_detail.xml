@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#efefef"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_06"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="品牌车型"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_brand"
+                    style="@style/TextView_choose"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:singleLine="true"
+                    android:text="宝马"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_06"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="车商"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_chejang"
+                    style="@style/TextView_choose"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:singleLine="true"
+                    android:text="无"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_06"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="指导价"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_zhidao"
+                    style="@style/TextView_choose"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:singleLine="true"
+                    android:text="78989"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_06"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="车牌号"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_chepai"
+                    style="@style/TextView_choose"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:singleLine="true"
+                    android:text="1234567"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_07"/>
+
+                <TextView
+
+                    style="@style/TextView_left"
+                    android:text="车架号"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_vin"
+                    style="@style/TextView_choose"
+                    android:text="123456789"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_08"/>
+
+                <TextView
+
+                    style="@style/TextView_left"
+                    android:layout_weight="0.75"
+                    android:text="首次上牌时间"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_first_time"
+                    style="@style/TextView_choose"
+                    android:text="好几天之前"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_09"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="行驶里程"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_run_dis"
+                    style="@style/TextView_choose"
+                    android:text="800米"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_10"/>
+
+                <TextView
+                    style="@style/TextView_left"
+                    android:text="车辆所在地"/>
+
+                <TextView
+                    android:id="@+id/tv_car_location"
+                    style="@style/TextView_choose"
+                    android:text="天朝"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_11"/>
+
+                <TextView
+
+                    style="@style/TextView_left"
+                    android:text="车辆图片"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_car_pic"
+                    style="@style/TextView_choose"
+                    android:text="查看"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_bg"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:text="业务员备注："/>
+
+                <TextView
+                    android:id="@+id/et_remarks_yewu"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:hint="业务员暂未填写"
+                    android:textColorHint="#b0afaf"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_13"/>
+
+                <TextView
+
+                    style="@style/TextView_left"
+                    android:text="业务员备注"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_yewu_remarks"
+                    style="@style/TextView_choose"
+                    android:clickable="true"
+                    android:text="查看"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/line"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/image_left_normal"
+                    android:src="@drawable/kaishipinggu_12"/>
+
+                <TextView
+
+                    style="@style/TextView_left"
+                    android:text="评估价"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_pinggu_price"
+                    style="@style/TextView_choose"
+                    android:text="评估师还未评估"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_bg"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:text="评估师备注："/>
+
+                <TextView
+                    android:id="@+id/et_remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="top"
+                    android:hint="评估师暂未填写"
+                    android:textColorHint="#b0afaf"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
+
+

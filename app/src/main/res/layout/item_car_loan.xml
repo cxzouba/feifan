@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#efefef"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/car_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="奔驰G63 AMG 2015款"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/iv_car"
+                android:layout_width="170dp"
+                android:layout_height="97dp"
+                android:src="@drawable/item_pinggushi_01"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/car_host_name"
+                    android:paddingTop="6dp"
+                    android:text="车主姓名："
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/car_host_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="9dp"
+                    android:paddingTop="6dp"
+                    android:text="李四啊"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_pinggu_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/car_host_name"
+                    android:layout_centerVertical="true"
+                    android:text="评估价："
+                    android:textColor="#d23b27"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/fuyi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@id/tv_pinggu_price"
+                    android:background="@drawable/fuyi"
+                    android:gravity="center"
+                    android:text="复"
+                    android:textColor="#F5776B"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/fangkuan"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@id/tv_pinggu_price"
+                    android:background="@drawable/fuyi"
+                    android:gravity="center"
+                    android:text="放款"
+                    android:textColor="#F5776B"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/fanyong"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@id/tv_pinggu_price"
+                    android:background="@drawable/fuyi"
+                    android:gravity="center"
+                    android:text="返佣"
+                    android:textColor="#F5776B"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/button3"
+                    android:background="@drawable/liucheng"
+                    android:focusable="false"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/button4"
+                    android:background="@drawable/button_zuofei"
+                    android:focusable="false"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/button3"
+                    android:background="@drawable/buchong"
+                    android:focusable="false"
+                    android:textColor="#fff"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/wanshan"
+                    android:focusable="false"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_new"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/item_bg"
+        >
+
+        <TextView
+            android:id="@+id/tv_chepai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="hei"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+</LinearLayout>

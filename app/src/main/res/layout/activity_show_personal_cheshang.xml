@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang1"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="获客方式"
+                />
+
+            <TextView
+                android:enabled="false"
+                android:id="@+id/tv_get_type"
+                style="@style/TextView_choose"
+                android:hint="请选择"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang3"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="姓名"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_name"
+                style="@style/EditText_input"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                />
+
+            <ImageView
+                android:id="@+id/cemera1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.45"
+                android:src="@drawable/zhaoxiang"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang6"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="身份证号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:enabled="false"
+                android:id="@+id/et_certificate_num"
+                style="@style/EditText_input"
+                android:background="@null"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang4"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="手机号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:enabled="false"
+                android:id="@+id/et_phone_num"
+                style="@style/EditText_input"
+                android:background="@null"
+                android:hint="请输入"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang8"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.54"
+                android:text="银行卡号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_bankcard_num"
+                style="@style/EditText_input"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.2"
+                android:background="@null"
+                android:enabled="false"
+                android:inputType="number"
+                />
+
+            <ImageView
+                android:id="@+id/cemera2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.30"
+                android:src="@drawable/zhaoxiang"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang12"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="GPS返点"
+                />
+
+            <TextView
+                android:id="@+id/tv_gps_price"
+                style="@style/TextView_choose"
+                android:enabled="false"
+                android:hint="请选择"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheshang13"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="车商返点"
+                />
+
+            <TextView
+                android:id="@+id/tv_cheshang_price"
+                style="@style/TextView_choose"
+                android:hint="请选择"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:padding="2dp"
+                android:src="@drawable/cautioner_06"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="所在地区"
+                />
+
+            <TextView
+                android:id="@+id/tv_cheshang_place"
+                style="@style/TextView_choose"
+                android:hint="请选择"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:padding="2dp"
+                android:src="@drawable/cautioner_08"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="详细地址"
+                />
+
+            <TextView
+                android:id="@+id/et_addr"
+                style="@style/TextView_choose"
+                android:enabled="false"
+                android:hint="请选择"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/bmapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clickable="true"
+                />
+
+            <View
+                android:id="@+id/view_center"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/img_location_point"
+                android:layout_width="12dp"
+                android:layout_height="30dp"
+                android:layout_above="@id/view_center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/map_pin"/>
+
+            <ImageView
+                android:id="@+id/img_location_back_origin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/rl_location"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="18dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/back_origin_normal"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_location"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/location_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="6dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_location"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/location"/>
+
+                        <TextView
+                            android:id="@+id/tv_addr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="地址:"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="地址定位说明"
+                android:layout_weight="0.6"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_remark"
+                style="@style/EditText_input"
+                android:background="@null"
+                android:hint="请输入"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorMyBlue"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="身份证照片"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:background="@drawable/item_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/certificate_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="110dp"
+                        android:src="@drawable/kuang"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="10dp"
+                        android:text="身份证正面"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/certificate_down"
+                        android:layout_width="wrap_content"
+                        android:layout_height="110dp"
+                        android:src="@drawable/kuang"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="10dp"
+                        android:text="身份证背面"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorMyBlue"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="银行卡照片"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:background="@drawable/item_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:paddingTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/bankcard_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="110dp"
+                        android:src="@drawable/kuang"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="10dp"
+                        android:text="银行卡正面"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/bankcard_down"
+                        android:layout_width="wrap_content"
+                        android:layout_height="110dp"
+                        android:src="@drawable/kuang"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="10dp"
+                        android:text="银行卡背面"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

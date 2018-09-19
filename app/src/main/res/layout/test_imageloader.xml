@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:text="征信类型:"
+                android:textSize="16sp"/>
+
+
+            <RadioGroup
+                android:id="@+id/rg_isnew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="24dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/zicha"/>
+
+                <RadioButton
+                    android:id="@+id/rb_own"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView3"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:padding="15dp"
+                    android:text="自查"
+                    android:textColor="#808080"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/rb_old_car"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="48dp"
+                    android:layout_toStartOf="@+id/rb_old_car"
+                    android:src="@drawable/daicha"/>
+
+                <RadioButton
+                    android:id="@+id/rb_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:padding="15dp"
+                    android:text="代查"
+                    android:textColor="#808080"
+                    />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/zhengxintubiao_01"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="客户姓名"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_customer_name"
+                style="@style/EditText_input"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.8"
+                />
+
+            <ImageView
+                android:id="@+id/cemera1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:src="@drawable/zhaoxiang"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/zhengxintubiao_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="身份证号"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_certificate_num"
+                style="@style/EditText_input"
+                android:background="@null"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/cheliangxinxi_13"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="身份证有效期"
+                />
+
+            <EditText
+                android:id="@+id/tv_certificate_date"
+                style="@style/EditText_input"
+                android:layout_marginRight="0dp"
+                android:inputType="number"
+                android:layout_weight="0.8"
+                />
+
+            <ImageView
+                android:id="@+id/cemera2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:src="@drawable/zhaoxiang"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/zhengxintubiao_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="驾驶证档案编号"
+                android:layout_weight="0.9"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_jiashi_num"
+                style="@style/EditText_input"
+                android:layout_weight="1.1"
+                android:inputType="number"
+                android:background="@null"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_zhengxin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="#cfcfcf">
+
+            <TextView
+                android:id="@+id/tv_baogao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:text="征信报告"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:overScrollMode="never"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_yuqi"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="#cfcfcf">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:text="逾期照片（选填）"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_yuqi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:overScrollMode="never"
+            />
+
+        <TextView
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_bg"
+            android:textSize="16sp"
+            android:text="备注："/>
+
+        <EditText
+            android:background="@drawable/item_bg"
+            android:id="@+id/remark"
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="（选填）"
+            android:gravity="top"
+            android:textSize="15sp"/>
+
+        <com.tuyenmonkey.mkloader.MKLoader
+            android:id="@+id/loading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="#ee878787"
+            android:visibility="gone"
+            app:mk_color="#ffffff"
+            app:mk_type="LineSpinner"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>

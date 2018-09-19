@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+                android:background="@drawable/xingkong"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/back"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/tv_title_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#ede8e8"
+        android:paddingTop="80dp"
+        android:text="完成业绩"
+        android:textSize="20sp"/>
+
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:layout_centerInParent="true"
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <TextView
+        android:id="@+id/tv_title_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chart1"
+        android:gravity="center"
+        android:textColor="#edeaea"
+        android:paddingTop="80dp"
+        android:text="销售销售我最强，销售销售我最棒"
+        android:textSize="20sp"/>
+    
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:src="@drawable/zhengxintubiao_01"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text="姓名"
+            />
+
+        <com.chaychan.viewlib.PowerfulEditText
+            android:id="@+id/et_name"
+            style="@style/EditText_input"
+            android:background="@null"
+            android:hint="请输入"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/ll_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/image_left_normal"
+            android:src="@drawable/zhengxintubiao_03"/>
+
+        <TextView
+            style="@style/TextView_left"
+            android:text="身份证号"
+            />
+
+        <com.chaychan.viewlib.PowerfulEditText
+            android:id="@+id/et_certificate_num"
+            style="@style/EditText_input"
+            android:background="@null"
+            android:hint="请输入"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/takephoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shenfen_up"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"
+            android:text="面部照片"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

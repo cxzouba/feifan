@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="企业执照，税额登记，组织机构代码证（或三证合一）"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_card_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/card_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="验资报告-公司章程"
+            android:textColor="@color/white"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_yanzi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/yanzi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="法人身份证"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_lawer_person_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lawer_person_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="面审表或电核记录"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_face_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/face_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="企业银行流水（近6个月）"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_company_bank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/company_bank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="法人征信报告或银行征信授权书"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_lawer_credit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lawer_credit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#939393"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="企业财务报表"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_company_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/company_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="其他财产证明"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_other_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/otner_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="二手车评估报告(新车不需要)"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_second_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/second_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="车辆登记证"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_car_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/car_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="车辆行驶证"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_car_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/car_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="企业家访照片"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_jiafang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_comvispic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#A8A9A8"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="企业经营地照片"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#D8D9D8"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_jingyingdi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_salepic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D8D9D8"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

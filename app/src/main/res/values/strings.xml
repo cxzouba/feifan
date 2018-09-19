@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">非凡贷遇</string>
+    <string name="login">登录</string>
+    <string name="get_sms_code">获取验证码</string>
+    <string name="reget_sms_code">重新发送</string>
+    <string name="reget_sms_code_countdown">重新发送(%s)</string>
+
+    <!--底部导航文字-->
+    <array name="bottombarlabel">
+        <item>工作台</item>
+        <item>交易贷</item>
+        <item>车抵贷</item>
+    </array>
+
+    <string name="camera_permission_required">本功能需要相机权限！</string>
+    <string name="hint_login_username">请输入手机号</string>
+    <string name="hint_login_password">请输入密码</string>
+    <string name="login_forget_pwd">忘记密码？</string>
+
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#efefef"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:layout_weight="0.18"
+                android:src="@drawable/pinggu2_03"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:layout_weight="0.8"
+                android:text="首次上牌时间"
+                />
+
+            <TextView
+                android:id="@+id/tv_run_time"
+                style="@style/TextView_choose"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_04"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="行驶里程"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_run_distance"
+                style="@style/EditText_input"
+                android:hint="请输入(公里)"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/item_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/image_left_normal"
+                android:src="@drawable/pinggu2_05"/>
+
+            <TextView
+                style="@style/TextView_left"
+                android:text="车辆所在地"
+                />
+
+            <com.chaychan.viewlib.PowerfulEditText
+                android:id="@+id/et_car_location"
+                style="@style/EditText_input"
+                android:hint="请输入"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="29dp"
+            android:background="@drawable/next"
+            android:enabled="false"/>
+    </LinearLayout>
+
+
+</ScrollView>
