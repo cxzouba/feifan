@@ -153,6 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (next) {
             tvNxt.setVisibility(View.VISIBLE);
         } else {
+
             tvNxt.setVisibility(View.GONE);
         }
     }

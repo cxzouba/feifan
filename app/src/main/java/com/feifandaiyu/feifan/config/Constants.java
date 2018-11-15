@@ -28,7 +28,7 @@ public class Constants {
         //http://official.hrbffdy.com/public/index.php/info/
         //正式https://www.hrbffdy.com/info/
         //测试http://192.168.3.32/feifancar/public/index.php/info/
-        public static final String BASEURL = "http://192.168.3.32/feifancar/public/index.php/info/";
+        public static final String BASEURL = "http://192.168.1.189/feifancar/public/index.php/info/";
         public static final String IMGBASEURL = BASEURL + "image?name=";
 
     }

@@ -408,6 +408,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                         if (userBean != null) {
                                             if (userBean.getCode().equals("0")) {
+                                                //
 
                                                 hud.dismiss();
 

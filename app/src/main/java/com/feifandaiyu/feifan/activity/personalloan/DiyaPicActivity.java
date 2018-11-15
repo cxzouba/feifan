@@ -996,7 +996,6 @@ public class DiyaPicActivity extends BaseActivity {
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
-
                             .setSelectMedia(selectMedia7) // 已选图片，传入在次进去可选中，不能传入网络图片
                             .setCompressFlag(1) // 1 系统自带压缩 2 luban压缩
                             .setCompressW(0) // 压缩宽 如果值大于图片原始宽高无效

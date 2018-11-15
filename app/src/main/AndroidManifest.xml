@@ -275,7 +275,7 @@
         <!-- value处填写您在百度地图平台申请的API_KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="sah2nezUDbjfDA7raZz1qCqpGGg5mnV4"/>
+            android:value="v3TBlxfiwhOem8QlDi98oWupslIf0dSt"/>
 
         <service
             android:name="com.baidu.location.f"

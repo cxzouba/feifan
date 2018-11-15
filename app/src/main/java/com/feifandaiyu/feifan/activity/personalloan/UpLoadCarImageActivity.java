@@ -990,7 +990,7 @@ public class UpLoadCarImageActivity extends BaseActivity implements View.OnClick
     } // 企业家访照片，企业经营地照片
 
     FunctionOptions options = new FunctionOptions.Builder()
-            .setType(FunctionConfig.TYPE_VIDEO) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
+            .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
             .setCropMode(FunctionConfig.CROP_MODEL_DEFAULT) // 裁剪模式 默认、1:1、3:4、3:2、16:9
             .setCompress(true) //是否压缩
             .setEnablePixelCompress(true) //是否启用像素压缩
