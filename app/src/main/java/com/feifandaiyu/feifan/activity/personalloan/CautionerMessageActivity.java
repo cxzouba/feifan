@@ -144,7 +144,6 @@ public class CautionerMessageActivity extends BaseActivity implements TextWatche
                 .setDimAmount(0.5f)
                 .show();
 
-//        rbLocal.setChecked(true);
         initAccessTokenWithAkSk();
 
         etAddr.addTextChangedListener(this);
