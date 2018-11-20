@@ -48,6 +48,7 @@ import com.feifandaiyu.feifan.utils.TimeUtils;
 import com.feifandaiyu.feifan.view.OnKeyActionListener;
 import com.feifandaiyu.feifan.view.VehiclePlateKeyboard;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.luck.picture.lib.compress.Luban;
 import com.luck.picture.lib.model.FunctionConfig;
@@ -1680,7 +1681,7 @@ public class DiyaPicNewActivity extends BaseActivity {
                                                                 .addParams("carType", isNew)
                                                                 .addParams("imei", etGpsNumber.getText().toString())
                                                                 .addParams("lnsuranceInvoice", DabenPic.toString())
-                                                                .addParams("insurance", jiaoqiangxian.equals("") ? QiangxianPic.toString() : jiaoqiangxian)
+                                                                .addParams("insurance", QiangxianPic.toString())
                                                                 .addParams("commercial", ShangxianPic.toString())
                                                                 .addParams("vincode", FengdangPic.toString())
                                                                 .addParams("licensenum", ChepaiPic.toString())
@@ -2231,21 +2232,21 @@ public class DiyaPicNewActivity extends BaseActivity {
                         public void onResult(String result) {
 //                            infoPopText(result);
                             Log.e("hshsh", result);
-//                            String json = result;
-//                            Gson gson = new Gson();
-//                            try {
-//                                bean = gson.fromJson(json, OcrBean.class);
-//                            } catch (JsonSyntaxException e) {
-//                                e.printStackTrace();
-//                                MyToast.show(DiyaPicNewActivity.this, "识别失败，请重试");
-//                            }
-//
-//                            if (bean != null) {
-//                                words = bean.getWords_result().toString();
-//                                MyToast.show(DiyaPicNewActivity.this, words);
-//                                LogUtils.e(bean.toString());
-//                                LogUtils.e(words);
-//                            }
+                            String json = result;
+                            Gson gson = new Gson();
+                            try {
+                                bean = gson.fromJson(json, OcrBean.class);
+                            } catch (JsonSyntaxException e) {
+                                e.printStackTrace();
+                                MyToast.show(DiyaPicNewActivity.this, "识别失败，请重试");
+                            }
+
+                            if (bean != null) {
+                                words = bean.getWords_result().toString();
+                                MyToast.show(DiyaPicNewActivity.this, words);
+                                LogUtils.e(bean.toString());
+                                LogUtils.e(words);
+                            }
                             try {
                                 JSONObject joResult = new JSONObject(result);
                                 words = joResult.getString("words_result");

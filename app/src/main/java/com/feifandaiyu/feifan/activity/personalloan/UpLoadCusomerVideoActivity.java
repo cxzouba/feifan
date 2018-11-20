@@ -182,11 +182,11 @@ public class UpLoadCusomerVideoActivity extends BaseActivity implements View.OnC
                                     startActivityForResult(intent, 100);
                                 } else {
                                     PictureConfig.getInstance().init(options).startOpenCamera(UpLoadCusomerVideoActivity.this, new ResultCa(imageView));
-                                    initText();
+//                                    initText();
                                 }
                             } else {
                                 PictureConfig.getInstance().init(options).startOpenCamera(UpLoadCusomerVideoActivity.this, new ResultCa(imageView));
-                                initText();
+//                                initText();
                             }
 
                             bottomPopupOption.dismiss();
@@ -256,54 +256,54 @@ public class UpLoadCusomerVideoActivity extends BaseActivity implements View.OnC
         if (requestCode == 100 && resultCode == RESULT_OK) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 PictureConfig.getInstance().init(options).startOpenCamera(UpLoadCusomerVideoActivity.this, new ResultCa(imageView));
-                initText();
+//                initText();
             } else {
                 Toast.makeText(this, "请打开权限以获取视频话术", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void initText() {
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.RGBA_8888);
-        params.x = 0;
-        params.y = windowHeight / 10;
-        params.gravity = Gravity.LEFT | Gravity.TOP;
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        mCaptureLl = (LinearLayout) inflater.inflate(R.layout.float_capture, null);
-        mCaptureIv = (TextView) mCaptureLl.findViewById(R.id.iv_capture);
-
-        if (rentType.equals("以租代购")) {
-            mCaptureIv.setText("        1.请问您是XXX吗？" +
-                    "   2.您的身份证号是XXX吗？您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司自愿申请新车租赁业务，您确定么？" +
-                    "   3.该笔租赁业务，租赁车型为XXX ，月租金为XXX，租期为XX期，您确定么？" +
-                    "   4.在租赁业务期间如发生二次抵押，变卖，逾期，非法营运，发生重大交通事故，所产生的一切后果，由您本人承担全部的法律责任您约定么？");
-        } else {
-
-            if (carLoan.equals("1")) {
-
-                mCaptureIv.setText("        请问您是XXX（先生/女士）吗？  您的身份证号码为XXX吗，您在泰隆银行自愿申请交易贷业务，您确定吗？" +
-                        "XXX（先生/女士），您在泰隆银行自愿申请汽车分期付款业务，您确定吗？" +
-                        "XXX（先生/女士），您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司分期付款购买一辆XXX品牌，车价为XXX元的汽车，并向泰隆银行申请购车分期业务和接受非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司的担保，您确定吗？ 该笔分期付款业务贷款额为XXX，月还款为XXX元，共计还款期限为XXX期， 您确定吗？" +
-                        "XXX（先生/女士）， 以上面谈是您的真实意愿表达，并愿意承担相应的法律责任， 您确定吗？");
-
-            } else if (carLoan.equals("2")) {
-
-                mCaptureIv.setText("        车抵贷问答视频话术:" +
-                        "请问您是XXX先生/女士）吗？  您的身份证号码为XXXXXXXXXXXX，您在泰隆银行自愿申请车抵贷业务，您确定吗？" +
-                        "XXX（先生/女士），您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司抵押一辆XXXXX汽车，贷款额是XXXXX万元， 贷款期限XX期， 利息共计XXXX元，您确定吗？" +
-                        "XXX（先生/女士）， 以上面谈是您的真实意愿表达，并愿意承担相应的法律责任， 您确定吗？");
-
-            }
-        }
-
-        mCaptureIv.setSelected(true);
-        mCaptureIv.setFocusable(true);
-        wm.addView(mCaptureLl, params);
-    }
+//    private void initText() {
+//        WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.TYPE_PHONE,
+//                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.RGBA_8888);
+//        params.x = 0;
+//        params.y = windowHeight / 10;
+//        params.gravity = Gravity.LEFT | Gravity.TOP;
+//        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//
+//        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+//        mCaptureLl = (LinearLayout) inflater.inflate(R.layout.float_capture, null);
+//        mCaptureIv = (TextView) mCaptureLl.findViewById(R.id.iv_capture);
+//
+//        if (rentType.equals("以租代购")) {
+//            mCaptureIv.setText("        1.请问您是XXX吗？" +
+//                    "   2.您的身份证号是XXX吗？您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司自愿申请新车租赁业务，您确定么？" +
+//                    "   3.该笔租赁业务，租赁车型为XXX ，月租金为XXX，租期为XX期，您确定么？" +
+//                    "   4.在租赁业务期间如发生二次抵押，变卖，逾期，非法营运，发生重大交通事故，所产生的一切后果，由您本人承担全部的法律责任您约定么？");
+//        } else {
+//
+//            if (carLoan.equals("1")) {
+//
+//                mCaptureIv.setText("        请问您是XXX（先生/女士）吗？  您的身份证号码为XXX吗，您在泰隆银行自愿申请交易贷业务，您确定吗？" +
+//                        "XXX（先生/女士），您在泰隆银行自愿申请汽车分期付款业务，您确定吗？" +
+//                        "XXX（先生/女士），您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司分期付款购买一辆XXX品牌，车价为XXX元的汽车，并向泰隆银行申请购车分期业务和接受非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司的担保，您确定吗？ 该笔分期付款业务贷款额为XXX，月还款为XXX元，共计还款期限为XXX期， 您确定吗？" +
+//                        "XXX（先生/女士）， 以上面谈是您的真实意愿表达，并愿意承担相应的法律责任， 您确定吗？");
+//
+//            } else if (carLoan.equals("2")) {
+//
+//                mCaptureIv.setText("        车抵贷问答视频话术:" +
+//                        "请问您是XXX先生/女士）吗？  您的身份证号码为XXXXXXXXXXXX，您在泰隆银行自愿申请车抵贷业务，您确定吗？" +
+//                        "XXX（先生/女士），您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司抵押一辆XXXXX汽车，贷款额是XXXXX万元， 贷款期限XX期， 利息共计XXXX元，您确定吗？" +
+//                        "XXX（先生/女士）， 以上面谈是您的真实意愿表达，并愿意承担相应的法律责任， 您确定吗？");
+//
+//            }
+//        }
+//
+//        mCaptureIv.setSelected(true);
+//        mCaptureIv.setFocusable(true);
+//        wm.addView(mCaptureLl, params);
+//    }
 
     /**
      * 车抵贷问答视频话术

@@ -573,7 +573,7 @@ public class ContractPicActivity extends BaseActivity {
                         LogUtils.i("ceshi---------------------------------" + key);
 
                         QiNiuUtlis.upLoad(compressPath, key, new UpCompletionHandler() {
-                                    @Override
+                                   @Override
                                     public void complete(String key, ResponseInfo info, JSONObject response) {
 
                                     }
