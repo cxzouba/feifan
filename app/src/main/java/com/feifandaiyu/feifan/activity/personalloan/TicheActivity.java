@@ -281,7 +281,12 @@ public class TicheActivity extends BaseActivity implements BaiduMap.OnMapStatusC
                 hud.show();
 
                 System.out.println(mLatitude + "=====" + mLongitude);
-
+               String x =  PreferenceUtils.getString(this, "carId");
+                if (x.equals("1")){
+                    x="0";
+                }else{
+                    x="1";
+                }
                 OkHttpUtils
                         .post()
                         //http://byu2763230001.my3w.com/pcreateArchivesublic/info/Login/
@@ -289,7 +294,7 @@ public class TicheActivity extends BaseActivity implements BaiduMap.OnMapStatusC
                         .addParams("carId", PreferenceUtils.getString(this, "carId"))
                         .addParams("lat", mLatitude.toString())
                         .addParams("lng", mLongitude.toString())
-                        .addParams("carType", "0")
+                        .addParams("carType", x)
                         .addParams("remarks", etRemarks.getText().toString())
                         .build()
                         .execute(new StringCallback() {

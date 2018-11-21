@@ -566,9 +566,9 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
             }
 
 
-            if (isOk) {
+            if (true) {
 
-                if (isJiashi) {
+                if (true) {
 
                     saveImage();
 
@@ -831,7 +831,7 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
                 .addParams("salesman_id", saleID)
                 .addParams("drivingLicence", etJiashiNum.getText().toString())
                 .addParams("termValidity", tvCertificateDate.getText().toString())
-                .addParams("token", msgBean.getToken())
+//                .addParams("token", msgBean.getToken())
 
                 .build()
                 .execute(new StringCallback() {

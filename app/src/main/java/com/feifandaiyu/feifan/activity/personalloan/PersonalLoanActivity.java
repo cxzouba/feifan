@@ -28,6 +28,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.feifandaiyu.feifan.R;
 import com.feifandaiyu.feifan.adapter.PersonalLoanAdapper;
@@ -54,6 +55,7 @@ import com.mylhyl.circledialog.view.listener.OnInputClickListener;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -126,7 +128,7 @@ public class PersonalLoanActivity extends AppCompatActivity {
     private BitmapDrawable bmdrawable;
     private KProgressHUD hud;
     private int firstVisiblePosition;
-
+    private int i= 1;
     PersonalLoanAdapper.OnButtonClickLisetrner4 btnlistener4 = new PersonalLoanAdapper.OnButtonClickLisetrner4() {
 
         @Override
@@ -165,7 +167,6 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
             PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
             PreferenceUtils.setString(PersonalLoanActivity.this, "isNew", list1.get(positon).getIsnew());
-
             startActivity(new Intent(PersonalLoanActivity.this, TicheActivity.class));
 
         }
@@ -179,8 +180,11 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
             PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
             PreferenceUtils.setString(PersonalLoanActivity.this, "isNew", list1.get(positon).getIsnew());
-
-            startActivity(new Intent(PersonalLoanActivity.this, LuohuActivity.class));
+            if (list1.get(positon).getIsnew().equals("1")) {
+                startActivity(new Intent(PersonalLoanActivity.this, LuohuActivity.class));
+            }else{
+                startActivity(new Intent(PersonalLoanActivity.this, UpNewCarImageActivity.class));
+            }
 
         }
     };
@@ -198,6 +202,7 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
         }
     };
+
 
     PersonalLoanAdapper.OnButtonClickLisetrner6 btnlistener6 = new PersonalLoanAdapper.OnButtonClickLisetrner6() {
 
@@ -1188,14 +1193,25 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
             }
         });
+        refreshLayout.setOnLoadmoreListener(new OnRefreshLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                i++;
+                initData1(i+"");
+            }
 
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 firstVisiblePosition = 0;
                 initData();
             }
         });
+//        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+//            @Override
+//            public void onRefresh(RefreshLayout refreshlayout) {
+//
+//            }
+//        });
 
         myDialog = new MyFangkuanDialog(this);
         myFanyongDialog = new MyFanyongDialog(this);
@@ -1221,6 +1237,80 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
     }
 
+    private void initData1(String x) {
+        LogUtils.e(saleID + "==========");
+
+        OkHttpUtils
+                .post()
+                .url(Constants.URLS.BASEURL + "Dealer/carlist")
+                .addParams("Id", saleID)
+                .addParams("status", isNew)
+                .addParams("page", x)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        System.out.println("PersonalLoanActivity____________________>>>>>" + e);
+                        hud.dismiss();
+                        MyToast.show(PersonalLoanActivity.this, "加载失败");
+//                        refreshLayout.setRefreshing(false)
+                        if (refreshLayout.isLoading()) {
+                            refreshLayout.finishLoadmore();
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        LogUtils.e("PersonalLoanActivity----------------->>>>>>" + response+i+"");
+                        hud.dismiss();
+                        String json = response;
+                        Gson gson = new Gson();
+                        bean = null;
+                        try {
+                            bean = gson.fromJson(json, PersonalLoanURLBean.class);
+                        } catch (JsonSyntaxException e) {
+                            LogUtils.e("PersonalLoanActivity----------------->>>>>>" + e.toString());
+
+
+                            if (refreshLayout.isLoading()) {
+                                refreshLayout.finishLoadmore();
+                            }
+                        }
+                        if (bean.getList().size()==0||bean.getList()!=null) {
+
+                            int role = bean.getRole();
+
+                            PreferenceUtils.setInt(PersonalLoanActivity.this, "role", role);
+                                    list1.addAll(bean.getList());
+                            if (bean.getCode() == 1) {
+
+                                adapper = new PersonalLoanAdapper(list1, PersonalLoanActivity.this, lisetener, btnlistener3, btnlistener4, btnlistener5, btnlistener6,
+                                        btnlistener7, btnlistener8, btnlistener9, btnlistener10, btnlistener11, btnlistener12, btnlistener13);
+                                lvPersonaloan.setAdapter(adapper);
+                                adapper.notifyDataSetChanged();
+
+//                                lvPersonaloan.setSelection(firstVisiblePosition);
+
+
+                                if (refreshLayout.isLoading()) {
+                                    refreshLayout.finishLoadmore();
+                                }
+                            } else {
+
+                                if (refreshLayout.isLoading()) {
+                                    refreshLayout.finishLoadmore();
+                                }
+
+                                MyToast.show(PersonalLoanActivity.this, "获取失败，code=0");
+                            }
+                        }else
+                        {
+                            i=1;
+                            MyToast.show(PersonalLoanActivity.this, "没有加载更多" );
+                        }
+                    }
+                });
+    }
     private void initData() {
         LogUtils.e(saleID + "==========");
 
@@ -1229,6 +1319,7 @@ public class PersonalLoanActivity extends AppCompatActivity {
                 .url(Constants.URLS.BASEURL + "Dealer/carlist")
                 .addParams("Id", saleID)
                 .addParams("status", isNew)
+                .addParams("page", "1")
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -1240,11 +1331,14 @@ public class PersonalLoanActivity extends AppCompatActivity {
                         if (refreshLayout.isRefreshing()) {
                             refreshLayout.finishRefresh();
                         }
+                        if (refreshLayout.isLoading()) {
+                            refreshLayout.finishLoadmore();
+                        }
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtils.e("PersonalLoanActivity----------------->>>>>>" + response);
+                        LogUtils.e("PersonalLoanActivity----------------->>>>>>" + response+i+"");
                         hud.dismiss();
                         String json = response;
                         Gson gson = new Gson();
@@ -1257,6 +1351,9 @@ public class PersonalLoanActivity extends AppCompatActivity {
                             if (refreshLayout.isRefreshing()) {
                                 refreshLayout.finishRefresh();
                             }
+                            if (refreshLayout.isLoading()) {
+                                refreshLayout.finishLoadmore();
+                            }
                         }
 
                         if (bean != null) {
@@ -1264,7 +1361,13 @@ public class PersonalLoanActivity extends AppCompatActivity {
                             int role = bean.getRole();
 
                             PreferenceUtils.setInt(PersonalLoanActivity.this, "role", role);
+                            if (i!=1){
+                                //如果不是第一次刷新
+                                for (int j = 0; j < bean.getList().size(); j++) {
+                                    list1.add(bean.getList().get(j));
+                                }
 
+                            }
                             list1 = bean.getList();
 //                            LogUtils.i(list1.size() + "---------------->>>>>>>>");
 
@@ -1289,13 +1392,18 @@ public class PersonalLoanActivity extends AppCompatActivity {
                                     refreshLayout.finishRefresh();
 
                                 }
-
+                                if (refreshLayout.isLoading()) {
+                                    refreshLayout.finishLoadmore();
+                                }
                             } else {
 
                                 if (refreshLayout.isRefreshing()) {
 
                                     refreshLayout.finishRefresh();
 
+                                }
+                                if (refreshLayout.isLoading()) {
+                                    refreshLayout.finishLoadmore();
                                 }
 
                                 MyToast.show(PersonalLoanActivity.this, "获取失败，code=0");

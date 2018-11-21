@@ -325,6 +325,12 @@ public class PersonalLoanAdapper extends BaseAdapter implements View.OnClickList
                     if (list.get(position).getFlag().equals("5") && list.get(position).getGps().equals("2")) {
                         viewHolder.button6.setVisibility(View.VISIBLE);
                     }
+                    if (list.get(position).getFlag().equals("6") && list.get(position).getLiftcar().equals("2")) {
+                        viewHolder.tvTiche.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(position).getFlag().equals("6") && list.get(position).getSettle().equals("2")) {
+                        viewHolder.tvLuohu.setVisibility(View.VISIBLE);
+                    }
                 }
                 viewHolder.button5.setVisibility(View.GONE);
 

@@ -80,7 +80,7 @@
         android:layout_height="match_parent"
         app:srlAccentColor="#fff"
         app:srlEnableHeaderTranslationContent="true"
-        app:srlEnableLoadmore="false"
+        app:srlEnableLoadmore="true"
         app:srlPrimaryColor="#333">
 
         <com.scwang.smartrefresh.header.StoreHouseHeader
@@ -97,6 +97,11 @@
             android:longClickable="true">
 
         </ListView>
+        <!--<com.scwang.smartrefresh.layout.footer.BallPulseFooter-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="55dp"-->
+            <!--app:shhLineWidth="2dp"-->
+            <!--app:shhText="FeiFan"/>-->
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 

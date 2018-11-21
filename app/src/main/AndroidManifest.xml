@@ -242,6 +242,8 @@
         <activity
             android:name=".activity.personalloan.BrandChooseActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.personalloan.UpNewCarImageActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.personalloan.DetailsCarMessageActivity"
             android:screenOrientation="portrait"/>
