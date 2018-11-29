@@ -64,7 +64,7 @@ public class PersonalLoanURLBean {
         private String userName;//无客户时值为：未选定
         private String telephone;//无手机号码时值为：****
         private String flag;//用户状态 无用户时 状态：-999
-        private String carloan;
+        private int carloan;
         private String carId;
         private String credit;
         private String visits_lat;
@@ -104,7 +104,7 @@ public class PersonalLoanURLBean {
         private List<String> invoice;//发票（新车）
         private List<String> invoiceshow;
 
-        private String liftcar;//提车 1-不可申请提车 2-可申请提车 （放款通过，补充材料后，可申请提车）
+        private String liftcar;//提车 1-不可申请提车 2-可申请提车 （放款通过，后，可申请提车）
         private String settle;//落户  1-不可落户，2-可落户
         private String mortgage;//抵押 1-不可抵押  2-可抵押
 
@@ -453,11 +453,11 @@ public class PersonalLoanURLBean {
             this.flag = flag;
         }
 
-        public String getCarloan() {
+        public int getCarloan() {
             return carloan;
         }
 
-        public void setCarloan(String carloan) {
+        public void setCarloan(int carloan) {
             this.carloan = carloan;
         }
 

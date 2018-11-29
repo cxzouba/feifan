@@ -185,7 +185,7 @@ public class DiyaPicActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        setTitle("补充材料");
+        setTitle("");
         showNext(true);
         ButterKnife.inject(this);
         initRecylerView();

@@ -67,6 +67,7 @@ public class FaceConfirmActivity extends BaseActivity {
     private String userId;
 
 
+
     @Override
     protected int getContentView() {
         return R.layout.activity_face_confirm;

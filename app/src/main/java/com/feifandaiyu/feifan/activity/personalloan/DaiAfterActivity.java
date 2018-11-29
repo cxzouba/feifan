@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -12,8 +13,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,12 +24,26 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.sdk.model.GeneralResult;
-import com.chaychan.viewlib.PowerfulEditText;
 import com.feifandaiyu.feifan.R;
 import com.feifandaiyu.feifan.adapter.GridImageAdapter;
 import com.feifandaiyu.feifan.adapter.OfficeAdappter;
@@ -35,18 +52,14 @@ import com.feifandaiyu.feifan.bean.OcrBean;
 import com.feifandaiyu.feifan.bean.OfficeBean;
 import com.feifandaiyu.feifan.bean.PersonalUploadImageBean;
 import com.feifandaiyu.feifan.config.Constants;
-import com.feifandaiyu.feifan.ocr.CameraActivity;
 import com.feifandaiyu.feifan.ocr.RecognizeService;
 import com.feifandaiyu.feifan.utils.FileUtil;
-import com.feifandaiyu.feifan.utils.ImageViewUtils;
 import com.feifandaiyu.feifan.utils.LogUtils;
 import com.feifandaiyu.feifan.utils.MyToast;
 import com.feifandaiyu.feifan.utils.PreferenceUtils;
 import com.feifandaiyu.feifan.utils.QiNiuUtlis;
 import com.feifandaiyu.feifan.utils.StringCreateUtils;
 import com.feifandaiyu.feifan.utils.TimeUtils;
-import com.feifandaiyu.feifan.view.OnKeyActionListener;
-import com.feifandaiyu.feifan.view.VehiclePlateKeyboard;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -81,69 +94,90 @@ import static com.zhy.http.okhttp.OkHttpUtils.post;
  * Created by davidzhao on 2017/5/10.
  */
 
-public class DiyaPicNewActivity extends BaseActivity {
+public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStatusChangeListener, OnGetGeoCoderResultListener {
 
     private static final int REQUEST_CODE_ACCURATE_BASIC = 101;
-    @InjectView(R.id.et_gps_number)
+    @InjectView(R.id.et_gps_number1)
     EditText etGpsNumber;
-    @InjectView(R.id.et_chepai_num)
-    TextView etChepaiNum;
-    @InjectView(R.id.ll_chepai)
-    LinearLayout llChepai;
-    @InjectView(R.id.et_chejia_num)
-    PowerfulEditText etChejiaNum;
-    @InjectView(R.id.ll_chejiahao)
-    LinearLayout llChejiahao;
-    @InjectView(R.id.rv_qiangxian)
-    RecyclerView rvQiangxian;
-    @InjectView(R.id.custom_shangxian)
-    RecyclerView customShangxian;
-    @InjectView(R.id.iv_fapiao)
-    ImageView ivFapiao;
-    @InjectView(R.id.iv_del_fapiao)
-    ImageView ivDelFapiao;
-    @InjectView(R.id.rl_fapiaopic)
-    RelativeLayout rlFapiaopic;
-    @InjectView(R.id.custom_fapiao)
-    RecyclerView customFapiao;
-    @InjectView(R.id.ll_fapiao)
-    LinearLayout llFapiao;
-    @InjectView(R.id.rl_fapiao)
-    RelativeLayout rlFapiao;
-    @InjectView(R.id.custom_xieyi)
-    RecyclerView customXieyi;
-    @InjectView(R.id.ll_xieyi)
-    LinearLayout llXieyi;
-    @InjectView(R.id.rl_xieyi)
-    RelativeLayout rlXieyi;
-    @InjectView(R.id.custom_fengdang)
-    RecyclerView customFengdang;
-    @InjectView(R.id.custom_chepaihao)
-    RecyclerView customChepaihao;
-    @InjectView(R.id.custom_anzhuang)
-    RecyclerView customAnzhuang;
-    @InjectView(R.id.custom_heying)
-    RecyclerView customHeying;
-    @InjectView(R.id.tv_choose_office)
-    TextView tvChooseOffice;
-    @InjectView(R.id.iv_jiaoqiangxian)
+    @InjectView(R.id.rv_daben1)
+    RecyclerView rvDaben;
+    @InjectView(R.id.iv_jiaoqiangxian1)
     ImageView ivJiaoqiangxian;
-    @InjectView(R.id.iv_del_jiaoqiangxian)
+    @InjectView(R.id.iv_del_jiaoqiangxian1)
     ImageView ivDelJiaoqiangxian;
-    @InjectView(R.id.rl_jiaoqiangxianpic)
+    @InjectView(R.id.rl_jiaoqiangxianpic1)
     RelativeLayout rlJiaoqiangxianpic;
-    @InjectView(R.id.custom_baoxianfapiao)
+    @InjectView(R.id.custom_qiangxian1)
+    RecyclerView customQiangxian;
+    @InjectView(R.id.iv_fapiao1)
+    ImageView ivFapiao;
+    @InjectView(R.id.iv_del_fapiao1)
+    ImageView ivDelFapiao;
+    @InjectView(R.id.rl_fapiaopic1)
+    RelativeLayout rlFapiaopic;
+    @InjectView(R.id.ll_fapiao1)
+    LinearLayout llFapiao;
+    @InjectView(R.id.rl_fapiao1)
+    RelativeLayout rlFapiao;
+    @InjectView(R.id.custom_shangxian1)
+    RecyclerView customShangxian;
+    @InjectView(R.id.custom_fengdang1)
+    RecyclerView customFengdang;
+    @InjectView(R.id.custom_chepaihao1)
+    RecyclerView customChepaihao;
+    @InjectView(R.id.ll_xieyi1)
+    LinearLayout llXieyi;
+    @InjectView(R.id.rl_xieyi1)
+    RelativeLayout rlXieyi;
+    @InjectView(R.id.custom_anzhuang1)
+    RecyclerView customAnzhuang;
+    @InjectView(R.id.custom_kehu1)
+    RecyclerView customKehu;
+    @InjectView(R.id.custom_ershou1)
+    RecyclerView customErshou;
+    @InjectView(R.id.custom_xingshizheng1)
+    RecyclerView customXingshizheng;
+    @InjectView(R.id.custom_baoxianfapiao1)
     RecyclerView customBaoxianfapiao;
-    @InjectView(R.id.et_customer_name)
-    TextView tvSaomiao;
-    @InjectView(R.id.cemera1)
-    ImageView cemera1;
-    @InjectView(R.id.custom_hegezheng)
-    RecyclerView customHegezheng;
-    @InjectView(R.id.ll_hegezheng)
-    LinearLayout llHegezheng;
-    @InjectView(R.id.rl_hegezheng)
-    RelativeLayout rlHegezheng;
+    @InjectView(R.id.custom_fapiao1)
+    RecyclerView customFapiao;
+    @InjectView(R.id.tv_choose_office1)
+    TextView tvChooseOffice;
+    @InjectView(R.id.bmapView1)
+    MapView bmapView;
+    @InjectView(R.id.view_center1)
+    View viewCenter;
+    @InjectView(R.id.img_location_point1)
+    ImageView imgLocationPoint;
+    @InjectView(R.id.img_location_back_origin1)
+    ImageView imgLocationBackOrigin;
+    @InjectView(R.id.iv_location1)
+    ImageView ivLocation;
+    @InjectView(R.id.tv_addr1)
+    TextView tvAddr;
+    @InjectView(R.id.rl_location1)
+    RelativeLayout rlLocation;
+
+    private boolean isTouch = true;
+    private boolean isFirstLoc = true;
+    private GeoCoder mSearch;
+    private Double mLatitude;
+    private Double mLongitude;
+
+    // 地图触摸事件监听器
+    BaiduMap.OnMapTouchListener touchListener = new BaiduMap.OnMapTouchListener() {
+        @Override
+        public void onTouch(MotionEvent event) {
+            isTouch = true;
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+
+                imgLocationBackOrigin.setImageResource(R.drawable.back_origin_normal);
+            }
+        }
+    };
+    private LatLng currentLatLng;
+    private InputMethodManager imm;
+
     private int themeStyle;
     private int previewColor, completeColor, previewBottomBgColor, previewTopBgColor, bottomBgColor, checkedBoxDrawable;
     private int copyMode = FunctionConfig.CROP_MODEL_DEFAULT;
@@ -214,26 +248,33 @@ public class DiyaPicNewActivity extends BaseActivity {
     private JSONArray DabenPic;
     private JSONArray QiangxianPic;
     private JSONArray ShangxianPic;
-    private JSONArray XingshizhengPic;
-    private JSONArray FapiaoPic;
-    private JSONArray HegezhengPic;
     private JSONArray FengdangPic;
-    private JSONArray ChepaiPic;
+    private JSONArray ChepaihaoPic;
     private JSONArray AnzhuangPic;
-    private JSONArray HeyingPic;
-    private JSONArray XieyiPic;
+    private JSONArray KehuPic;
+    private JSONArray ErshouPic;
+    private JSONArray XingshizhengPic;
+    private JSONArray BXFapiaoPic;
+    private JSONArray FapiaoPic;
+    private BaiduMap mBaiduMap;
+    private Point mCenterPoint = null;
+    /**
+     * 当前经纬度
+     */
+    private LatLng mLoactionLatLng;
+
+    private LocationClient mLocClient;
+
+    private MyLocationListener myLocationListener = new MyLocationListener();
+
     private UploadOptions uploadOptions;
     private int upLoadCount = 1;
     private ProgressDialog progressDialog;
     private String key;
-    private String saleID;
-    private String userId;
-    private String isNew;
+
     private OfficeAdappter adapter;
     private List<OfficeBean.ListBean> list;
-    private String rid;
-    private String carId;
-    private String mid;
+
     private PictureConfig.OnSelectResultCallback resultCallback1 = new PictureConfig.OnSelectResultCallback() {
         @Override
         public void onSelectSuccess(List<LocalMedia> resultList) {
@@ -273,10 +314,10 @@ public class DiyaPicNewActivity extends BaseActivity {
             switch (type) {
                 case 0:
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -322,10 +363,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback1);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback1);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback1);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback1);
                     }
                     break;
                 case 1:
@@ -377,10 +418,10 @@ public class DiyaPicNewActivity extends BaseActivity {
         public void onAddPicClick(int type, int position) {
             switch (type) {
                 case 0:
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -426,10 +467,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback2);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback2);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback2);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback2);
                     }
                     break;
                 case 1:
@@ -483,10 +524,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -532,10 +573,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback3);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback3);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback3);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback3);
                     }
                     break;
                 case 1:
@@ -588,10 +629,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -637,10 +678,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback4);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback4);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback4);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback4);
                     }
                     break;
                 case 1:
@@ -692,10 +733,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -741,10 +782,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback5);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback5);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback5);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback5);
                     }
                     break;
                 case 1:
@@ -796,10 +837,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -845,10 +886,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback6);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback6);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback6);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback6);
                     }
                     break;
                 case 1:
@@ -900,10 +941,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -949,10 +990,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback7);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback7);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback7);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback7);
                     }
                     break;
                 case 1:
@@ -1004,10 +1045,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -1053,10 +1094,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback8);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback8);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback8);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback8);
                     }
                     break;
                 case 1:
@@ -1108,10 +1149,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -1157,10 +1198,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback9);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback9);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback9);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback9);
                     }
                     break;
                 case 1:
@@ -1212,10 +1253,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -1261,10 +1302,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback10);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback10);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback10);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback10);
                     }
                     break;
                 case 1:
@@ -1316,10 +1357,10 @@ public class DiyaPicNewActivity extends BaseActivity {
                 case 0:
 
 
-                    themeStyle = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.blue);//设置主题样式
+                    themeStyle = ContextCompat.getColor(DaiAfterActivity.this, R.color.blue);//设置主题样式
                     checkedBoxDrawable = R.drawable.select_cb;//设置图片勾选样式
-                    previewColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
-                    completeColor = ContextCompat.getColor(DiyaPicNewActivity.this, R.color.tab_color_true);
+                    previewColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
+                    completeColor = ContextCompat.getColor(DaiAfterActivity.this, R.color.tab_color_true);
 
                     FunctionOptions options = new FunctionOptions.Builder()
                             .setType(FunctionConfig.TYPE_IMAGE) // 图片or视频 FunctionConfig.TYPE_IMAGE  TYPE_VIDEO
@@ -1365,10 +1406,10 @@ public class DiyaPicNewActivity extends BaseActivity {
 
                     if (mode) {
                         // 只拍照
-                        PictureConfig.getInstance().init(options).startOpenCamera(DiyaPicNewActivity.this, resultCallback11);
+                        PictureConfig.getInstance().init(options).startOpenCamera(DaiAfterActivity.this, resultCallback11);
                     } else {
                         // 先初始化参数配置，在启动相册
-                        PictureConfig.getInstance().init(options).openPhoto(DiyaPicNewActivity.this, resultCallback11);
+                        PictureConfig.getInstance().init(options).openPhoto(DaiAfterActivity.this, resultCallback11);
                     }
                     break;
                 case 1:
@@ -1382,392 +1423,11 @@ public class DiyaPicNewActivity extends BaseActivity {
     private String jiaoqiangxian;
     private String jiaoqiangxianShow;
     private String fapiao;
-    private String fapiaoShow;
+    //    private String fapiaoShow;
     private OcrBean bean;
     private String words;
+    private String rid;
 
-    @OnClick({R.id.tv_next, R.id.iv_back, R.id.et_chepai_num, R.id.iv_del_jiaoqiangxian, R.id.iv_del_fapiao, R.id.cemera1})
-    public void onViewClicked(final View view) {
-        switch (view.getId()) {
-            case R.id.iv_del_jiaoqiangxian:
-                rlJiaoqiangxianpic.setVisibility(View.GONE);
-                jiaoqiangxian = "";
-                break;
-            case R.id.iv_del_fapiao:
-                rlFapiaopic.setVisibility(View.GONE);
-                fapiao = "";
-                break;
-            case R.id.cemera1:
-                Intent intent = new Intent(DiyaPicNewActivity.this, CameraActivity.class);
-                intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                        FileUtil.getSaveFile(getApplication()).getAbsolutePath());
-                intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                        CameraActivity.CONTENT_TYPE_GENERAL);
-                startActivityForResult(intent, REQUEST_CODE_ACCURATE_BASIC);
-                break;
-
-            case R.id.et_chepai_num:
-
-                VehiclePlateKeyboard keyboard = new VehiclePlateKeyboard(DiyaPicNewActivity.this, new OnKeyActionListener() {
-                    @Override
-                    public void onFinish(String input) {
-                        if (input.length() == 7) {
-                            etChepaiNum.setText(input);
-                        } else {
-                            etChepaiNum.setText("");
-
-                        }
-                    }
-
-                    @Override
-                    public void onProcess(String input) {
-                        etChepaiNum.setText("");
-                    }
-                });
-                keyboard.setDefaultPlateNumber("");
-                keyboard.show(getWindow().getDecorView().getRootView());
-                break;
-
-            case R.id.tv_next:
-
-                if (etGpsNumber.getText() == null || etGpsNumber.getText().toString().equals("")) {
-                    MyToast.show(this, "请填写GPS设备号");
-                    return;
-                }
-
-                if (selectMedia1.size() <= 0) {
-                    MyToast.show(this, "保险发票照片未上传");
-                    return;
-                }
-
-                if (selectMedia2.size() <= 0 && jiaoqiangxian.equals("")) {
-                    MyToast.show(this, "交强险未上传");
-                    return;
-                }
-
-                if (selectMedia3.size() <= 0) {
-                    MyToast.show(this, "商业险未上传");
-                    return;
-                }
-
-                if (isNew.equals("1")) {
-
-                    if (etChepaiNum.getText() == null || etChepaiNum.getText().toString().equals("")) {
-                        MyToast.show(this, "请填写车辆牌照");
-                        return;
-                    }
-
-                    if (etChejiaNum.getText() == null || etChejiaNum.getText().toString().equals("")) {
-                        MyToast.show(this, "请填写车架号");
-                        return;
-                    }
-
-//                    if (selectMedia4.size() <= 0) {
-//                        MyToast.show(this, "行驶证未上传");
-//                        return;
-//                    }
-
-                    if (selectMedia5.size() <= 0 && fapiao.equals("")) {
-                        MyToast.show(this, "车发票未上传");
-                        return;
-                    }
-
-//                    if (selectMedia6.size() <= 0) {
-//                        MyToast.show(this, "合格证未上传");
-//                        return;
-//                    }
-                } else if (isNew.equals("2")) {
-                    if (selectMedia11.size() <= 0) {
-                        MyToast.show(this, "二手车买卖协议未上传");
-                        return;
-                    }
-                }
-
-                if (selectMedia7.size() <= 0) {
-                    MyToast.show(this, "风挡vin码和设备合影未上传");
-                    return;
-                }
-
-                if (selectMedia8.size() <= 0) {
-                    MyToast.show(this, "车牌号和设备合影未上传");
-                    return;
-                }
-
-                if (selectMedia9.size() <= 0) {
-                    MyToast.show(this, "安装位置未上传");
-                    return;
-                }
-
-                if (selectMedia10.size() <= 0) {
-                    MyToast.show(this, "客户合影未上传");
-                    return;
-                }
-
-
-                if (rid == null || tvChooseOffice.getText().toString().equals("")) {
-                    MyToast.show(this, "请选择内勤人员");
-                    return;
-                }
-
-
-                showProgressDialog();
-
-                final List<String> keys = new ArrayList<>();
-
-                List<List<LocalMedia>> medias = new ArrayList<>();
-                piccount = selectMedia1.size() + selectMedia2.size() + selectMedia3.size() + selectMedia4.size() + selectMedia5.size() + selectMedia6.size()
-                        + selectMedia7.size() + selectMedia8.size() + selectMedia9.size() + selectMedia10.size() + selectMedia11.size();
-
-                LogUtils.i("piccount", "-------------------->" + piccount);
-
-                medias.add(selectMedia1);
-                medias.add(selectMedia2);
-                medias.add(selectMedia3);
-                medias.add(selectMedia4);
-                medias.add(selectMedia5);
-                medias.add(selectMedia6);
-                medias.add(selectMedia7);
-                medias.add(selectMedia8);
-                medias.add(selectMedia9);
-                medias.add(selectMedia10);
-                medias.add(selectMedia11);
-
-                for (int i = 0; i < medias.size(); i++) {
-                    List<LocalMedia> localMedias = medias.get(i);
-                    for (int j = 0; j < localMedias.size(); j++) {
-                        String compressPath = localMedias.get(j).getCompressPath();
-                        System.out.println("compressPath=" + compressPath);
-                        final int finalI = i;
-                        final int finalJ = j;
-                        key = UUID.randomUUID() + TimeUtils.getRandomFileName() + ".png";
-                        if (finalI == 0) {
-                            if (DabenPic == null) {
-                                DabenPic = new JSONArray();
-                            }
-                            try {
-                                DabenPic.put(finalJ, key);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-
-                            }
-                        } else if (finalI == 1) {
-                            if (QiangxianPic == null) {
-                                QiangxianPic = new JSONArray();
-                            }
-
-                            try {
-                                QiangxianPic.put(finalJ, key);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-
-                            }
-                        } else if (finalI == 2) {
-                            if (ShangxianPic == null) {
-                                ShangxianPic = new JSONArray();
-                            }
-                            try {
-                                ShangxianPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 3) {
-                            if (XingshizhengPic == null) {
-                                XingshizhengPic = new JSONArray();
-                            }
-                            try {
-                                XingshizhengPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 4) {
-                            if (FapiaoPic == null) {
-                                FapiaoPic = new JSONArray();
-                            }
-                            try {
-                                FapiaoPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 5) {
-                            if (HegezhengPic == null) {
-                                HegezhengPic = new JSONArray();
-                            }
-                            try {
-                                HegezhengPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 6) {
-                            if (FengdangPic == null) {
-                                FengdangPic = new JSONArray();
-                            }
-                            try {
-                                FengdangPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 7) {
-                            if (ChepaiPic == null) {
-                                ChepaiPic = new JSONArray();
-                            }
-                            try {
-                                ChepaiPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 8) {
-                            if (AnzhuangPic == null) {
-                                AnzhuangPic = new JSONArray();
-                            }
-                            try {
-                                AnzhuangPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 9) {
-                            if (HeyingPic == null) {
-                                HeyingPic = new JSONArray();
-                            }
-                            try {
-                                HeyingPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (finalI == 10) {
-                            if (XieyiPic == null) {
-                                XieyiPic = new JSONArray();
-                            }
-                            try {
-                                XieyiPic.put(finalJ, key);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        LogUtils.i("ceshi---------------------------------" + key);
-
-                        QiNiuUtlis.upLoad(compressPath, key, new UpCompletionHandler() {
-                                    @Override
-                                    public void complete(String key, ResponseInfo info, JSONObject response) {
-
-                                    }
-                                }
-
-                                , uploadOptions = new UploadOptions(null, null, false,
-                                        new UpProgressHandler() {
-                                            @Override
-                                            public void progress(String key, double percent) {
-                                                LogUtils.i("percent " + "----------->>>" + percent);
-                                                if (percent == 1.0) {
-                                                    upLoadCount++;
-                                                    LogUtils.i("upLoadCount", "-------------------->" + upLoadCount);
-
-                                                    System.out.println(upLoadCount == piccount);
-                                                    if (upLoadCount == piccount) {
-
-                                                        LogUtils.e("DabenPic=" + DabenPic);
-                                                        LogUtils.e("QiangxianPic=" + QiangxianPic);
-                                                        LogUtils.e("ShangxianPic=" + ShangxianPic);
-                                                        LogUtils.e("XingshizhengPic=" + XingshizhengPic);
-                                                        LogUtils.e("FapiaoPic=" + FapiaoPic);
-//                                                        LogUtils.e("HegezhengPic=" + HegezhengPic);
-                                                        LogUtils.e("FengdangPic=" + FengdangPic);
-                                                        LogUtils.e("ChepaiPic=" + ChepaiPic);
-                                                        LogUtils.e("AnzhuangPic=" + AnzhuangPic);
-                                                        LogUtils.e("HeyingPic=" + HeyingPic);
-//                                                        LogUtils.e("XieyiPic=" + XieyiPic);
-
-                                                        OkHttpUtils
-                                                                .post()
-                                                                .url(Constants.URLS.BASEURL + "Login/addImei")
-                                                                .addParams("carId", carId)
-                                                                .addParams("flag", "0")
-                                                                .addParams("carType", isNew)
-                                                                .addParams("imei", etGpsNumber.getText().toString())
-                                                                .addParams("lnsuranceInvoice", DabenPic.toString())//baoxianfapiao
-                                                                .addParams("insurance", QiangxianPic.toString())
-                                                                .addParams("commercial", ShangxianPic.toString())
-                                                                .addParams("vincode", FengdangPic.toString())
-                                                                .addParams("licensenum", ChepaiPic.toString())
-                                                                .addParams("position", AnzhuangPic.toString())
-                                                                .addParams("groupPhoto", HeyingPic.toString())
-                                                                .addParams("taxProof", XingshizhengPic == null ? "-1" : XingshizhengPic.toString())//税完证明
-                                                                .addParams("invoice", FapiaoPic == null ? "-1" : FapiaoPic.toString())
-                                                                .addParams("rid", rid)
-                                                                .addParams("licenseNum", etChepaiNum.getText().toString())
-                                                                .addParams("vinCode", etChejiaNum.getText().toString())
-                                                                .addParams("words", words)
-
-                                                                .build()
-                                                                .execute(new StringCallback() {
-                                                                    @Override
-                                                                    public void onError(Call call, Exception e, int id) {
-                                                                        progressDialog.dismiss();
-                                                                        upLoadCount = 0;
-                                                                        LogUtils.e("personalUploadImage------------->>>>" + e);
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onResponse(String response, int id) {
-                                                                        LogUtils.e("personalUploadImage------------->>>>" + response);
-                                                                        progressDialog.dismiss();
-
-                                                                        String json = response;
-                                                                        Gson gson = new Gson();
-                                                                        PersonalUploadImageBean bean = gson.fromJson(json, PersonalUploadImageBean.class);
-
-                                                                        if (bean.getCode() == 1) {
-
-//                                                                            startActivity(new Intent(DiyaPicActivity.this, CustomerDrawNameActivity.class));
-                                                                            // 设置过渡动画
-//                                                                            int enterAnim6 = R.anim.next_enter;// 进入的activity对应的动画资源
-//                                                                            int exitAnim6 = R.anim.next_exit;// 结束的activity对应的动画资源
-//                                                                            overridePendingTransition(enterAnim6, exitAnim6);
-                                                                            MyToast.show(DiyaPicNewActivity.this, "上传成功");
-
-                                                                            finish();
-
-                                                                        } else {
-                                                                            upLoadCount = 0;
-
-                                                                            MyToast.show(DiyaPicNewActivity.this, bean.getMsg());
-                                                                        }
-
-
-                                                                    }
-                                                                });
-                                                    }
-                                                }
-
-                                            }
-                                        }, null));
-
-
-                    }
-                }
-                break;
-
-            case R.id.iv_back:
-                new AlertDialog.Builder(this)
-                        .setMessage(StringCreateUtils.createString())
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                                int enterAnim0 = R.anim.pre_enter;// 进入的activity对应的动画资源
-                                int exitAnim0 = R.anim.pre_exit;// 结束的activity对应的动画资源
-                                overridePendingTransition(enterAnim0, exitAnim0);
-                            }
-                        })
-                        .setNegativeButton("取消", null)
-                        .show();
-                break;
-
-            default:
-        }
-    }
 
     private void showProgressDialog() {
         progressDialog = new ProgressDialog(this);
@@ -1791,25 +1451,26 @@ public class DiyaPicNewActivity extends BaseActivity {
         System.gc();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.inject(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.inject(this);
+//    }
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_diya_pic_new;
+        return R.layout.activity_daiafter;
     }
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        setTitle("补充材料");
-        showNext(true);
+        // TODO: add setContentView(...) invocation
         ButterKnife.inject(this);
+        setTitle("");
+        showNext(true);
         initRecylerView();
-
+        initmap();
         hud = KProgressHUD.create(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setLabel("请稍后")
@@ -1823,22 +1484,22 @@ public class DiyaPicNewActivity extends BaseActivity {
         initData();
 
         initAccessTokenWithAkSk();
-
-        if (isNew.equals("1")) {
-            rlXieyi.setVisibility(View.GONE);
-            llXieyi.setVisibility(View.GONE);
-            llChepai.setVisibility(View.VISIBLE);
-            llChejiahao.setVisibility(View.VISIBLE);
-        } else if (isNew.equals("2")) {
-//            rlXingshizheng.setVisibility(View.GONE);
-//            llXingshizheng.setVisibility(View.GONE);
-            rlFapiao.setVisibility(View.GONE);
-            llFapiao.setVisibility(View.GONE);
-//            rlHegezheng.setVisibility(View.GONE);
-//            llHegezheng.setVisibility(View.GONE);
-            llChepai.setVisibility(View.GONE);
-            llChejiahao.setVisibility(View.GONE);
-        }
+//
+//        if (isNew.equals("1")) {
+//            rlXieyi.setVisibility(View.GONE);
+//            llXieyi.setVisibility(View.GONE);
+//            llChepai.setVisibility(View.VISIBLE);
+//            llChejiahao.setVisibility(View.VISIBLE);
+//        } else if (isNew.equals("2")) {
+////            rlXingshizheng.setVisibility(View.GONE);
+////            llXingshizheng.setVisibility(View.GONE);
+//            rlFapiao.setVisibility(View.GONE);
+//            llFapiao.setVisibility(View.GONE);
+////            rlHegezheng.setVisibility(View.GONE);
+////            llHegezheng.setVisibility(View.GONE);
+//            llChepai.setVisibility(View.GONE);
+//            llChejiahao.setVisibility(View.GONE);
+//        }
 
         tv_next = (TextView) findViewById(R.id.tv_next);
 
@@ -1873,27 +1534,27 @@ public class DiyaPicNewActivity extends BaseActivity {
         ms10.setOrientation(LinearLayoutManager.HORIZONTAL);
         ms11.setOrientation(LinearLayoutManager.HORIZONTAL);
 
-        customBaoxianfapiao.setLayoutManager(ms1);
-        rvQiangxian.setLayoutManager(ms2);
+        rvDaben.setLayoutManager(ms1);
+        customQiangxian.setLayoutManager(ms2);
         customShangxian.setLayoutManager(ms3);
-        customHegezheng.setLayoutManager(ms4);
-        customFapiao.setLayoutManager(ms5);
-//        customHegezheng.setLayoutManager(ms6);
-        customFengdang.setLayoutManager(ms7);
-        customChepaihao.setLayoutManager(ms8);
-        customAnzhuang.setLayoutManager(ms9);
-        customHeying.setLayoutManager(ms10);
-        customXieyi.setLayoutManager(ms11);
+        customFengdang.setLayoutManager(ms4);
+        customChepaihao.setLayoutManager(ms5);
+        customAnzhuang.setLayoutManager(ms6);
+        customKehu.setLayoutManager(ms7);
+        customErshou.setLayoutManager(ms8);
+        customXingshizheng.setLayoutManager(ms9);
+        customBaoxianfapiao.setLayoutManager(ms10);
+        customFapiao.setLayoutManager(ms11);
 
         adapter1 = new GridImageAdapter(this, onAddPicClickListener1);
         adapter1.setList(selectMedia1);
         adapter1.setSelectMax(maxSelectNum);
-        customBaoxianfapiao.setAdapter(adapter1);
+        rvDaben.setAdapter(adapter1);
 
         adapter2 = new GridImageAdapter(this, onAddPicClickListener2);
         adapter2.setList(selectMedia2);
         adapter2.setSelectMax(maxSelectNum);
-        rvQiangxian.setAdapter(adapter2);
+        customQiangxian.setAdapter(adapter2);
 
         adapter3 = new GridImageAdapter(this, onAddPicClickListener3);
         adapter3.setList(selectMedia3);
@@ -1903,42 +1564,42 @@ public class DiyaPicNewActivity extends BaseActivity {
         adapter4 = new GridImageAdapter(this, onAddPicClickListener4);
         adapter4.setList(selectMedia4);
         adapter4.setSelectMax(maxSelectNum);
-        customHegezheng.setAdapter(adapter4);
+        customFengdang.setAdapter(adapter4);
 
         adapter5 = new GridImageAdapter(this, onAddPicClickListener5);
         adapter5.setList(selectMedia5);
         adapter5.setSelectMax(maxSelectNum);
-        customFapiao.setAdapter(adapter5);
+        customChepaihao.setAdapter(adapter5);
 
-//        adapter6 = new GridImageAdapter(this, onAddPicClickListener6);
-//        adapter6.setList(selectMedia6);
-//        adapter6.setSelectMax(maxSelectNum);
-//        customHegezheng.setAdapter(adapter6);
+        adapter6 = new GridImageAdapter(this, onAddPicClickListener6);
+        adapter6.setList(selectMedia6);
+        adapter6.setSelectMax(maxSelectNum);
+        customAnzhuang.setAdapter(adapter6);
 
         adapter7 = new GridImageAdapter(this, onAddPicClickListener7);
         adapter7.setList(selectMedia7);
         adapter7.setSelectMax(maxSelectNum);
-        customFengdang.setAdapter(adapter7);
+        customKehu.setAdapter(adapter7);
 
         adapter8 = new GridImageAdapter(this, onAddPicClickListener8);
         adapter8.setList(selectMedia8);
         adapter8.setSelectMax(maxSelectNum);
-        customChepaihao.setAdapter(adapter8);
+        customErshou.setAdapter(adapter8);
 
         adapter9 = new GridImageAdapter(this, onAddPicClickListener9);
         adapter9.setList(selectMedia9);
         adapter9.setSelectMax(maxSelectNum);
-        customAnzhuang.setAdapter(adapter9);
+        customXingshizheng.setAdapter(adapter9);
 
         adapter10 = new GridImageAdapter(this, onAddPicClickListener10);
         adapter10.setList(selectMedia10);
         adapter10.setSelectMax(maxSelectNum);
-        customHeying.setAdapter(adapter10);
+        customBaoxianfapiao.setAdapter(adapter10);
 
         adapter11 = new GridImageAdapter(this, onAddPicClickListener11);
         adapter11.setList(selectMedia11);
         adapter11.setSelectMax(maxSelectNum);
-        customXieyi.setAdapter(adapter11);
+        customFapiao.setAdapter(adapter11);
 
 
         adapter1.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
@@ -1948,12 +1609,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia1);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia1);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia1.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia1.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia1.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -1967,12 +1628,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia2);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia2);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia2.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia2.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia2.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -1988,12 +1649,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia3);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia3);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia3.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia3.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia3.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2007,12 +1668,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia4);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia4);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia4.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia4.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia4.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2026,37 +1687,37 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia5);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia5);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia5.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia5.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia5.get(position - 1).getPath());
                         }
                         break;
                 }
 
             }
         });
-//        adapter6.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//                switch (selectType) {
-//                    case FunctionConfig.TYPE_IMAGE:
-//                        // 预览图片 可长按保存 也可自定义保存路径
-//                        //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-//                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia6);
-//                        break;
-//                    case FunctionConfig.TYPE_VIDEO:
-//                        // 预览视频
-//                        if (selectMedia6.size() > 0) {
-//                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia6.get(position - 1).getPath());
-//                        }
-//                        break;
-//                }
-//
-//            }
-//        });
+        adapter6.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                switch (selectType) {
+                    case FunctionConfig.TYPE_IMAGE:
+                        // 预览图片 可长按保存 也可自定义保存路径
+                        //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia6);
+                        break;
+                    case FunctionConfig.TYPE_VIDEO:
+                        // 预览视频
+                        if (selectMedia6.size() > 0) {
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia6.get(position - 1).getPath());
+                        }
+                        break;
+                }
+
+            }
+        });
         adapter7.setOnItemClickListener(new GridImageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
@@ -2064,12 +1725,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia7);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia7);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia7.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia7.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia7.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2083,12 +1744,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia8);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia8);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia8.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia8.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia8.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2102,12 +1763,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia9);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia9);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia9.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia9.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia9.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2121,12 +1782,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia10);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia10);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia10.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia10.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia10.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2140,12 +1801,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                     case FunctionConfig.TYPE_IMAGE:
                         // 预览图片 可长按保存 也可自定义保存路径
                         //PictureConfig.getInstance().externalPicturePreview(MainActivity.this, "/custom_file", position, selectMedia);
-                        PictureConfig.getInstance().externalPicturePreview(DiyaPicNewActivity.this, position - 1, selectMedia11);
+                        PictureConfig.getInstance().externalPicturePreview(DaiAfterActivity.this, position - 1, selectMedia11);
                         break;
                     case FunctionConfig.TYPE_VIDEO:
                         // 预览视频
                         if (selectMedia11.size() > 0) {
-                            PictureConfig.getInstance().externalPictureVideo(DiyaPicNewActivity.this, selectMedia11.get(position - 1).getPath());
+                            PictureConfig.getInstance().externalPictureVideo(DaiAfterActivity.this, selectMedia11.get(position - 1).getPath());
                         }
                         break;
                 }
@@ -2157,31 +1818,24 @@ public class DiyaPicNewActivity extends BaseActivity {
 
     private void initData() {
 
-        saleID = PreferenceUtils.getString(this, "saleID");
-        userId = PreferenceUtils.getString(DiyaPicNewActivity.this, "userId");
-        carId = PreferenceUtils.getString(DiyaPicNewActivity.this, "carId");
-        mid = PreferenceUtils.getString(DiyaPicNewActivity.this, "mid");
 
-        isNew = PreferenceUtils.getString(DiyaPicNewActivity.this, "isNew");
+        jiaoqiangxian = PreferenceUtils.getString(DaiAfterActivity.this, "jiaoqiangxian");
+        jiaoqiangxianShow = PreferenceUtils.getString(DaiAfterActivity.this, "jiaoqiangxianShow");
+        fapiao = PreferenceUtils.getString(DaiAfterActivity.this, "fapiao");
+//        fapiaoShow = PreferenceUtils.getString(DaiAfterActivity.this, "fapiaoShow");
+//        LogUtils.e(fapiaoShow);
+//
+//        if (!fapiaoShow.equals("")) {
+//            rlFapiaopic.setVisibility(View.VISIBLE);
+//            ImageViewUtils.showNetImage(DaiAfterActivity.this, fapiaoShow, R.drawable.crabgnormal, ivFapiao);
+//
+//        }
 
-        jiaoqiangxian = PreferenceUtils.getString(DiyaPicNewActivity.this, "jiaoqiangxian");
-        jiaoqiangxianShow = PreferenceUtils.getString(DiyaPicNewActivity.this, "jiaoqiangxianShow");
-        fapiao = PreferenceUtils.getString(DiyaPicNewActivity.this, "fapiao");
-        fapiaoShow = PreferenceUtils.getString(DiyaPicNewActivity.this, "fapiaoShow");
-        LogUtils.e(fapiaoShow);
-        LogUtils.e(jiaoqiangxianShow);
-
-        if (!fapiaoShow.equals("")) {
-            rlFapiaopic.setVisibility(View.VISIBLE);
-            ImageViewUtils.showNetImage(DiyaPicNewActivity.this, fapiaoShow, R.drawable.crabgnormal, ivFapiao);
-
-        }
-
-        if (!jiaoqiangxianShow.equals("")) {
-            rlJiaoqiangxianpic.setVisibility(View.VISIBLE);
-            ImageViewUtils.showNetImage(DiyaPicNewActivity.this, jiaoqiangxianShow, R.drawable.crabgnormal, ivJiaoqiangxian);
-
-        }
+//        if (!jiaoqiangxianShow.equals("")) {
+//            rlJiaoqiangxianpic.setVisibility(View.VISIBLE);
+//            ImageViewUtils.showNetImage(DaiAfterActivity.this, jiaoqiangxianShow, R.drawable.crabgnormal, ivJiaoqiangxian);
+//
+//        }
     }
 
     private void initAccessTokenWithAkSk() {
@@ -2235,12 +1889,12 @@ public class DiyaPicNewActivity extends BaseActivity {
                                 bean = gson.fromJson(json, OcrBean.class);
                             } catch (JsonSyntaxException e) {
                                 e.printStackTrace();
-                                MyToast.show(DiyaPicNewActivity.this, "识别失败，请重试");
+                                MyToast.show(DaiAfterActivity.this, "识别失败，请重试");
                             }
 
                             if (bean != null) {
                                 words = bean.getWords_result().toString();
-                                MyToast.show(DiyaPicNewActivity.this, words);
+                                MyToast.show(DaiAfterActivity.this, words);
                                 LogUtils.e(bean.toString());
                                 LogUtils.e(words);
                             }
@@ -2262,48 +1916,532 @@ public class DiyaPicNewActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.tv_choose_office)
-    public void onViewClicked() {
-        LayoutInflater inflater = LayoutInflater.from(this);//将xml布局转换为view
-        View view = inflater.inflate(R.layout.dialog_bank, null);//将xml布局转换为view,里面有listview
-        final ListView listView = (ListView) view.findViewById(R.id.pop_bank);
 
-        final Dialog builder = new Dialog(DiyaPicNewActivity.this);
-        builder.setContentView(view);
-        builder.setTitle("请选择内勤");
-        builder.show();
 
-        post()
-                .url(Constants.URLS.BASEURL + "UserPic/officeList")
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        LogUtils.i("officeList------------------>>>" + e);
+    private void initmap() {
+        // 地图初始化
+        mBaiduMap = bmapView.getMap();
+        // 设置为普通矢量图地图
+        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+        bmapView.setPadding(10, 0, 0, 10);
+        bmapView.showZoomControls(false);
+        // 设置缩放比例(500米)
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);
+        mBaiduMap.setMapStatus(msu);
 
-                    }
+        mBaiduMap.setOnMapTouchListener(touchListener);
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        LogUtils.i("officeList------------------>>>" + response);
-                        String json = response;
-                        Gson gson = new Gson();
-                        OfficeBean bean = gson.fromJson(json, OfficeBean.class);
+        // 初始化当前 MapView 中心屏幕坐标
+        mCenterPoint = mBaiduMap.getMapStatus().targetScreen;
+        mLoactionLatLng = mBaiduMap.getMapStatus().target;
 
-                        if (bean.getCode() == 1) {
-                            list = bean.getList();
-                            adapter = new OfficeAdappter(DiyaPicNewActivity.this, list, new OfficeAdappter.OnRadiobuttonclick() {
+        // 地理编码
+        mSearch = GeoCoder.newInstance();
+        mSearch.setOnGetGeoCodeResultListener(this);
+
+        // 地图状态监听
+        mBaiduMap.setOnMapStatusChangeListener(this);
+        // 定位初始化
+        mLocClient = new LocationClient(getApplicationContext());
+        mLocClient.registerLocationListener(myLocationListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(5000);
+        option.setIsNeedAddress(true);
+        mLocClient.setLocOption(option);
+
+        mLocClient.start();
+        // 可定位
+        mBaiduMap.setMyLocationEnabled(true);
+
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onMapStatusChangeStart(MapStatus mapStatus) {
+
+    }
+
+    @Override
+    public void onMapStatusChange(MapStatus mapStatus) {
+
+    }
+
+    @Override
+    public void onMapStatusChangeFinish(MapStatus mapStatus) {
+
+    }
+
+    @Override
+    public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+
+    }
+
+    @Override
+    public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+
+    }
+
+
+    @OnClick({R.id.iv_del_jiaoqiangxian1, R.id.iv_del_fapiao1, R.id.tv_choose_office1,R.id.tv_next,R.id.iv_back})
+    public void onViewClicked(View view) {
+
+            switch (view.getId()) {
+                case R.id.iv_back:
+                    new AlertDialog.Builder(this)
+                            .setMessage(StringCreateUtils.createString())
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void radioButtonck(int position) {
-                                    rid = list.get(position).getRid();
-                                    tvChooseOffice.setText(list.get(position).getAdmin_name());
-                                    builder.dismiss();
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                    int enterAnim0 = R.anim.pre_enter;// 进入的activity对应的动画资源
+                                    int exitAnim0 = R.anim.pre_exit;// 结束的activity对应的动画资源
+                                    overridePendingTransition(enterAnim0, exitAnim0);
+                                }
+                            })
+                            .setNegativeButton("取消", null)
+                            .show();
+
+                    break;
+
+                case R.id.tv_choose_office1:
+                    LayoutInflater inflater = LayoutInflater.from(this);//将xml布局转换为view
+                    View view1 = inflater.inflate(R.layout.dialog_bank, null);//将xml布局转换为view,里面有listview
+                    final ListView listView = (ListView) view1.findViewById(R.id.pop_bank);
+
+                    final Dialog builder = new Dialog(DaiAfterActivity.this);
+                    builder.setContentView(view1);
+                    builder.setTitle("请选择内勤");
+                    builder.show();
+
+                    post()
+                            .url(Constants.URLS.BASEURL + "UserPic/officeList")
+                            .build()
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onError(Call call, Exception e, int id) {
+                                    LogUtils.i("officeList------------------>>>" + e);
+
+                                }
+
+                                @Override
+                                public void onResponse(String response, int id) {
+                                    LogUtils.i("officeList------------------>>>" + response);
+                                    String json = response;
+                                    Gson gson = new Gson();
+                                    OfficeBean bean = gson.fromJson(json, OfficeBean.class);
+
+                                    if (bean.getCode() == 1) {
+                                        list = bean.getList();
+                                        adapter = new OfficeAdappter(DaiAfterActivity.this, list, new OfficeAdappter.OnRadiobuttonclick() {
+                                            @Override
+                                            public void radioButtonck(int position) {
+                                                rid = list.get(position).getRid();
+                                                tvChooseOffice.setText(list.get(position).getAdmin_name());
+                                                builder.dismiss();
+                                            }
+                                        });
+                                        listView.setAdapter(adapter);//给listview设置适配器，adapter
+                                    }
                                 }
                             });
-                            listView.setAdapter(adapter);//给listview设置适配器，adapter
-                        }
+
+                    break;
+                case R.id.iv_del_jiaoqiangxian1:
+                    rlJiaoqiangxianpic.setVisibility(View.GONE);
+                    jiaoqiangxian = "";
+                    break;
+                case R.id.iv_del_fapiao1:
+                    rlFapiaopic.setVisibility(View.GONE);
+                    fapiao = "";
+                    break;
+
+
+                case R.id.tv_next:
+
+                    if (etGpsNumber.getText() == null || etGpsNumber.getText().toString().equals("")) {
+                        MyToast.show(this, "请填写GPS设备号");
+                        return;
                     }
-                });
+
+                    if (selectMedia1.size() <= 0) {
+                        MyToast.show(this, "保险发票照片未上传");
+                        return;
+                    }
+
+                    if (selectMedia2.size() <= 0 && jiaoqiangxian.equals("")) {
+                        MyToast.show(this, "交强险未上传");
+                        return;
+                    }
+
+                    if (selectMedia3.size() <= 0) {
+                        MyToast.show(this, "商业险未上传");
+                        return;
+                    }
+
+//                if (isNew.equals("1")) {
+//
+//                    if (etChepaiNum.getText() == null || etChepaiNum.getText().toString().equals("")) {
+//                        MyToast.show(this, "请填写车辆牌照");
+//                        return;
+//                    }
+//
+//                    if (etChejiaNum.getText() == null || etChejiaNum.getText().toString().equals("")) {
+//                        MyToast.show(this, "请填写车架号");
+//                        return;
+//                    }
+
+//                    if (selectMedia4.size() <= 0) {
+//                        MyToast.show(this, "行驶证未上传");
+//                        return;
+//                    }
+
+                    if (selectMedia5.size() <= 0 && fapiao.equals("")) {
+                        MyToast.show(this, "车发票未上传");
+                        return;
+                    }
+
+//                    if (selectMedia6.size() <= 0) {
+//                        MyToast.show(this, "合格证未上传");
+//                        return;
+//                    }
+//                } else if (isNew.equals("2")) {
+//                    if (selectMedia11.size() <= 0) {
+//                        MyToast.show(this, "二手车买卖协议未上传");
+//                        return;
+//                    }
+//                }
+
+                    if (selectMedia7.size() <= 0) {
+                        MyToast.show(this, "风挡vin码和设备合影未上传");
+                        return;
+                    }
+
+                    if (selectMedia8.size() <= 0) {
+                        MyToast.show(this, "车牌号和设备合影未上传");
+                        return;
+                    }
+
+                    if (selectMedia9.size() <= 0) {
+                        MyToast.show(this, "安装位置未上传");
+                        return;
+                    }
+
+                    if (selectMedia10.size() <= 0) {
+                        MyToast.show(this, "客户合影未上传");
+                        return;
+                    }
+
+
+//                if (rid == null || tvChooseOffice.getText().toString().equals("")) {
+//                    MyToast.show(this, "请选择内勤人员");
+//                    return;
+//                }
+
+
+                    showProgressDialog();
+
+                    final List<String> keys = new ArrayList<>();
+
+                    List<List<LocalMedia>> medias = new ArrayList<>();
+                    piccount = selectMedia1.size() + selectMedia2.size() + selectMedia3.size() + selectMedia4.size() + selectMedia5.size() + selectMedia6.size()
+                            + selectMedia7.size() + selectMedia8.size() + selectMedia9.size() + selectMedia10.size() + selectMedia11.size();
+
+                    LogUtils.i("piccount", "-------------------->" + piccount);
+
+                    medias.add(selectMedia1);
+                    medias.add(selectMedia2);
+                    medias.add(selectMedia3);
+                    medias.add(selectMedia4);
+                    medias.add(selectMedia5);
+                    medias.add(selectMedia6);
+                    medias.add(selectMedia7);
+                    medias.add(selectMedia8);
+                    medias.add(selectMedia9);
+                    medias.add(selectMedia10);
+                    medias.add(selectMedia11);
+
+                    for (int i = 0; i < medias.size(); i++) {
+                        List<LocalMedia> localMedias = medias.get(i);
+                        for (int j = 0; j < localMedias.size(); j++) {
+                            String compressPath = localMedias.get(j).getCompressPath();
+                            System.out.println("compressPath=" + compressPath);
+                            final int finalI = i;
+                            final int finalJ = j;
+                            key = UUID.randomUUID() + TimeUtils.getRandomFileName() + ".png";
+                            if (finalI == 0) {
+                                if (DabenPic == null) {
+                                    DabenPic = new JSONArray();
+                                }
+                                try {
+                                    DabenPic.put(finalJ, key);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+
+                                }
+                            } else if (finalI == 1) {
+                                if (QiangxianPic == null) {
+                                    QiangxianPic = new JSONArray();
+                                }
+
+                                try {
+                                    QiangxianPic.put(finalJ, key);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+
+                                }
+                            } else if (finalI == 2) {
+                                if (ShangxianPic == null) {
+                                    ShangxianPic = new JSONArray();
+                                }
+                                try {
+                                    ShangxianPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 3) {
+                                if (FengdangPic == null) {
+                                    FengdangPic = new JSONArray();
+                                }
+                                try {
+                                    FengdangPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 4) {
+                                if (ChepaihaoPic == null) {
+                                    ChepaihaoPic = new JSONArray();
+                                }
+                                try {
+                                    ChepaihaoPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 5) {
+                                if (AnzhuangPic == null) {
+                                    AnzhuangPic = new JSONArray();
+                                }
+                                try {
+                                    AnzhuangPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 6) {
+                                if (KehuPic == null) {
+                                    KehuPic = new JSONArray();
+                                }
+                                try {
+                                    KehuPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 7) {
+                                if (ErshouPic == null) {
+                                    ErshouPic = new JSONArray();
+                                }
+                                try {
+                                    ErshouPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 8) {
+                                if (AnzhuangPic == null) {
+                                    AnzhuangPic = new JSONArray();
+                                }
+                                try {
+                                    AnzhuangPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 9) {
+                                if (XingshizhengPic == null) {
+                                    XingshizhengPic = new JSONArray();
+                                }
+                                try {
+                                    XingshizhengPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 10) {
+                                if (BXFapiaoPic == null) {
+                                    BXFapiaoPic = new JSONArray();
+                                }
+                                try {
+                                    BXFapiaoPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            } else if (finalI == 11) {
+                                if (FapiaoPic == null) {
+                                    FapiaoPic = new JSONArray();
+                                }
+                                try {
+                                    FapiaoPic.put(finalJ, key);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+
+                            LogUtils.i("ceshi---------------------------------" + key);
+
+                            QiNiuUtlis.upLoad(compressPath, key, new UpCompletionHandler() {
+                                        @Override
+                                        public void complete(String key, ResponseInfo info, JSONObject response) {
+
+                                        }
+                                    }
+
+                                    , uploadOptions = new UploadOptions(null, null, false,
+                                            new UpProgressHandler() {
+                                                @Override
+                                                public void progress(String key, double percent) {
+                                                    LogUtils.i("percent " + "----------->>>" + percent);
+                                                    if (percent == 1.0) {
+                                                        upLoadCount++;
+                                                        LogUtils.i("upLoadCount", "-------------------->" + upLoadCount);
+
+                                                        System.out.println(upLoadCount == piccount);
+                                                        if (upLoadCount == piccount) {
+
+                                                            LogUtils.e("DabenPic=" + DabenPic);
+                                                            LogUtils.e("QiangxianPic=" + QiangxianPic);
+                                                            LogUtils.e("ShangxianPic=" + ShangxianPic);
+                                                            LogUtils.e("XingshizhengPic=" + XingshizhengPic);
+                                                            LogUtils.e("FapiaoPic=" + FapiaoPic);
+//                                                        LogUtils.e("HegezhengPic=" + HegezhengPic);
+//                                                        LogUtils.e("FengdangPic=" + FengdangPic);
+//                                                        LogUtils.e("ChepaiPic=" + ChepaiPic);
+//                                                        LogUtils.e("AnzhuangPic=" + AnzhuangPic);
+//                                                        LogUtils.e("HeyingPic=" + HeyingPic);
+//                                                        LogUtils.e("XieyiPic=" + XieyiPic);
+
+                                                            OkHttpUtils
+                                                                    .post()
+                                                                    .url(Constants.URLS.BASEURL + "Transfer/UsedCarAddImei")
+                                                                    .addParams("carId",rid)
+                                                                    .addParams("flag", "0")
+                                                                    .addParams("imei", etGpsNumber.getText().toString())
+                                                                    .addParams("lnsuranceInvoice", DabenPic.toString())
+                                                                    .addParams("insurance", QiangxianPic.toString())
+                                                                    .addParams("commercial", ShangxianPic.toString())
+                                                                    .addParams("vincode", FengdangPic.toString())
+                                                                    .addParams("position", AnzhuangPic.toString())
+                                                                    .addParams("invoice", FapiaoPic == null ? "-1" : FapiaoPic.toString())
+                                                                    .addParams("words", words)
+
+                                                                    .build()
+                                                                    .execute(new StringCallback() {
+                                                                        @Override
+                                                                        public void onError(Call call, Exception e, int id) {
+                                                                            progressDialog.dismiss();
+                                                                            upLoadCount = 0;
+                                                                            LogUtils.e("personalUploadImage------------->>>>" + e);
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onResponse(String response, int id) {
+                                                                            LogUtils.e("personalUploadImage------------->>>>" + response);
+                                                                            progressDialog.dismiss();
+
+                                                                            String json = response;
+                                                                            Gson gson = new Gson();
+                                                                            PersonalUploadImageBean bean = gson.fromJson(json, PersonalUploadImageBean.class);
+
+                                                                            if (bean.getCode() == 1) {
+
+//                                                                            startActivity(new Intent(DiyaPicActivity.this, CustomerDrawNameActivity.class));
+                                                                                // 设置过渡动画
+//                                                                            int enterAnim6 = R.anim.next_enter;// 进入的activity对应的动画资源
+//                                                                            int exitAnim6 = R.anim.next_exit;// 结束的activity对应的动画资源
+//                                                                            overridePendingTransition(enterAnim6, exitAnim6);
+                                                                                MyToast.show(DaiAfterActivity.this, "上传成功");
+
+                                                                                finish();
+
+                                                                            } else {
+                                                                                upLoadCount = 0;
+
+                                                                                MyToast.show(DaiAfterActivity.this, bean.getMsg());
+                                                                            }
+
+
+                                                                        }
+                                                                    });
+                                                        }
+                                                    }
+
+                                                }
+                                            }, null));
+
+
+                                          break;
+
+                        }}}}
+
+
+
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//    }
+
+    /**
+     * 定位SDK监听函数
+     */
+    public class MyLocationListener implements BDLocationListener {
+
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            // map view 销毁后不在处理新接收的位置
+            if (location == null || bmapView == null) {
+                return;
+            }
+
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    .latitude(location.getLatitude())
+                    .longitude(location.getLongitude())
+                    .build();
+            mBaiduMap.setMyLocationData(locData);
+
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+
+            LogUtils.e("mLatitude", mLatitude.toString());
+            LogUtils.e("mLongitude", mLongitude.toString());
+
+//System.out.println(location.getAddress()+location.getLocationDescribe() + location.getAddrStr() + location.getLocTypeDescription());
+
+            currentLatLng = new LatLng(mLatitude, mLongitude);
+            mLoactionLatLng = new LatLng(mLatitude, mLongitude);
+
+            tvAddr.setText(location.getAddrStr());
+
+            // 是否第一次定位
+            if (isFirstLoc) {
+                isFirstLoc = false;
+                // 实现动画跳转
+                MapStatusUpdate u = MapStatusUpdateFactory
+                        .newLatLng(currentLatLng);
+                mBaiduMap.animateMapStatus(u);
+
+                return;
+            }
+
+        }
+
     }
 }
 

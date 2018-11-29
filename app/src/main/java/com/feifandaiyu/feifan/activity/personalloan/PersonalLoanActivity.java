@@ -241,21 +241,36 @@ public class PersonalLoanActivity extends AppCompatActivity {
 
                             if (bean.getCode() == 1) {
 
-//                                if (bean.getRejects().getDismissal().equals("0")) {
-
+                                if (bean.getRejects().getDismissal().equals("0")) {
+                        //复议驳回
                                 if (list1.get(positon).getCarpic().equals("1")) {
+                                    if(list1.get(positon).getIsnew().equals("1")){
+                                        //是新车
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "isNew", list1.get(positon).getIsnew());
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "userId", list1.get(positon).getId());
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "mid", list1.get(positon).getMid());
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "jiaoqiangxian", list1.get(positon).getInsurance().size() == 0 ? "" : list1.get(positon).getInsurance().get(0));
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "jiaoqiangxianShow", list1.get(positon).getInsuranceshow().size() == 0 ? "" : list1.get(positon).getInsuranceshow().get(0));
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "fapiao", list1.get(positon).getInvoice().size() == 0 ? "" : list1.get(positon).getInvoice().get(0));
+                                        PreferenceUtils.setString(PersonalLoanActivity.this, "fapiaoShow", list1.get(positon).getInvoiceshow().size() == 0 ? "" : list1.get(positon).getInvoiceshow().get(0));
 
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "isNew", list1.get(positon).getIsnew());
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "userId", list1.get(positon).getId());
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "mid", list1.get(positon).getMid());
+                                        startActivity(new Intent(PersonalLoanActivity.this, DiyaPicNewActivity.class));
+                                    }else{
+                                        if ( list1.get(positon).getCarloan()==0){
+                                            //是交易贷二手车
+                                            PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
+                                            Intent intent = new Intent(PersonalLoanActivity.this,DaiAfterActivity.class);
+                                            startActivity(intent);
+                                        }else   if ( list1.get(positon).getCarloan()==1){
+                                            //车抵贷二手车
+                                            //++++++++++++++++++++++++
+                                            Intent intent = new Intent(PersonalLoanActivity.this,DaiAfterActivity.class);
+                                            startActivity(intent);
+                                        }
 
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "jiaoqiangxian", list1.get(positon).getInsurance().size() == 0 ? "" : list1.get(positon).getInsurance().get(0));
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "jiaoqiangxianShow", list1.get(positon).getInsuranceshow().size() == 0 ? "" : list1.get(positon).getInsuranceshow().get(0));
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "fapiao", list1.get(positon).getInvoice().size() == 0 ? "" : list1.get(positon).getInvoice().get(0));
-                                    PreferenceUtils.setString(PersonalLoanActivity.this, "fapiaoShow", list1.get(positon).getInvoiceshow().size() == 0 ? "" : list1.get(positon).getInvoiceshow().get(0));
+                                    }
 
-                                    startActivity(new Intent(PersonalLoanActivity.this, DiyaPicNewActivity.class));
 
                                 } else if (list1.get(positon).getCarpic().equals("-999")) {
 
@@ -269,7 +284,7 @@ public class PersonalLoanActivity extends AppCompatActivity {
                                 int enterAnim6 = R.anim.next_enter;// 进入的activity对应的动画资源
                                 int exitAnim6 = R.anim.next_exit;// 结束的activity对应的动画资源
                                 overridePendingTransition(enterAnim6, exitAnim6);
-//                                }
+                                }
 //                                else {
 //
 //                                    if (list1.get(positon).getIsnew().equals("2")) {
