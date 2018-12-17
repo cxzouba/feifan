@@ -298,17 +298,17 @@ public class PersonalLoanAdapper extends BaseAdapter implements View.OnClickList
                         viewHolder.tvTiche.setVisibility(View.GONE);
                     }
 
-                    if (list.get(position).getSettle().equals("2")) {
+                    if (list.get(position).getFlag().equals("6") && list.get(position).getSettle().equals("2")) {
                         viewHolder.tvLuohu.setVisibility(View.VISIBLE);
                     } else {
                         viewHolder.tvLuohu.setVisibility(View.GONE);
                     }
 
-                    if (list.get(position).getMortgage().equals("2")) {
-                        viewHolder.tvDiya.setVisibility(View.VISIBLE);
-                    } else {
+//                    if (list.get(position).getMortgage().equals("2")) {
+//                        viewHolder.tvDiya.setVisibility(View.VISIBLE);
+//                    } else {
                         viewHolder.tvDiya.setVisibility(View.GONE);
-                    }
+//                    }
 
                     if (list.get(position).getPay().equals("2")) {
                         viewHolder.tvFangkuan.setVisibility(View.VISIBLE);

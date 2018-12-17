@@ -292,6 +292,12 @@
         <activity
             android:name=".activity.MyCameraActivity"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".activity.personalloan.CarDiYaActivity"
+            android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name=".activity.personalloan.Cost1Activity"

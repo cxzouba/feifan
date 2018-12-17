@@ -209,7 +209,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
             .setCropH(200) // cropH-->裁剪高度 值不能小于100 如果值大于图片原始宽高 将返回原图大小
             .setMaxB(102400) // 压缩最大值 例如:200kb  就设置202400，202400 / 1024 = 200kb
             .setEnablePixelCompress(true)
-            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
             .setCheckNumMode(false)
             .setCompressQuality(100) // 图片裁剪质量,默认无损
             .setImageSpanCount(4) // 每行个数
@@ -343,7 +343,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -447,7 +447,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -553,7 +553,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -658,7 +658,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -762,7 +762,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -866,7 +866,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -970,7 +970,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -1074,7 +1074,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -1178,7 +1178,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -1282,7 +1282,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -1386,7 +1386,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -1427,6 +1427,10 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
     private OcrBean bean;
     private String words;
     private String rid;
+    private String userId;
+    private String carId;
+    private String mid;
+    private String isNew;
 
 
     private void showProgressDialog() {
@@ -1471,6 +1475,11 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
         showNext(true);
         initRecylerView();
         initmap();
+        userId = PreferenceUtils.getString(DaiAfterActivity.this, "userId");
+        carId = PreferenceUtils.getString(DaiAfterActivity.this, "carId");
+        mid = PreferenceUtils.getString(DaiAfterActivity.this, "mid");
+
+        isNew = PreferenceUtils.getString(DaiAfterActivity.this, "isNew");
         hud = KProgressHUD.create(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setLabel("请稍后")
@@ -2064,7 +2073,10 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
 
 
                 case R.id.tv_next:
-
+                    if(rid==null||rid.equals("")){
+                        MyToast.show(this, "内勤人员不能为空");
+                        return;
+                    }
                     if (etGpsNumber.getText() == null || etGpsNumber.getText().toString().equals("")) {
                         MyToast.show(this, "请填写GPS设备号");
                         return;
@@ -2253,15 +2265,6 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                                     e.printStackTrace();
                                 }
                             } else if (finalI == 8) {
-                                if (AnzhuangPic == null) {
-                                    AnzhuangPic = new JSONArray();
-                                }
-                                try {
-                                    AnzhuangPic.put(finalJ, key);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            } else if (finalI == 9) {
                                 if (XingshizhengPic == null) {
                                     XingshizhengPic = new JSONArray();
                                 }
@@ -2270,7 +2273,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                            } else if (finalI == 10) {
+                            } else if (finalI == 9) {
                                 if (BXFapiaoPic == null) {
                                     BXFapiaoPic = new JSONArray();
                                 }
@@ -2279,7 +2282,7 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                            } else if (finalI == 11) {
+                            } else if (finalI == 10) {
                                 if (FapiaoPic == null) {
                                     FapiaoPic = new JSONArray();
                                 }
@@ -2326,18 +2329,26 @@ public class DaiAfterActivity extends BaseActivity implements BaiduMap.OnMapStat
 
                                                             OkHttpUtils
                                                                     .post()
-                                                                    .url(Constants.URLS.BASEURL + "Transfer/UsedCarAddImei")
-                                                                    .addParams("carId",rid)
-                                                                    .addParams("flag", "0")
+                                                                    .url(Constants.URLS.BASEURL + "Login/addImei")
+                                                                    .addParams("carId",carId)
                                                                     .addParams("imei", etGpsNumber.getText().toString())
-                                                                    .addParams("lnsuranceInvoice", DabenPic.toString())
+                                                                    .addParams("flag", "0")
+                                                                    .addParams("carType", "2")
+                                                                    .addParams("afterMortgage", DabenPic.toString())
                                                                     .addParams("insurance", QiangxianPic.toString())
                                                                     .addParams("commercial", ShangxianPic.toString())
                                                                     .addParams("vincode", FengdangPic.toString())
                                                                     .addParams("position", AnzhuangPic.toString())
-                                                                    .addParams("invoice", FapiaoPic == null ? "-1" : FapiaoPic.toString())
-                                                                    .addParams("words", words)
-
+                                                                    .addParams("licensenum", ChepaihaoPic.toString())
+                                                                    .addParams("groupPhoto", KehuPic.toString())
+                                                                    .addParams("drivingLicense", XingshizhengPic.toString())
+                                                                    .addParams("lnsuranceInvoice", BXFapiaoPic.toString())
+                                                                    .addParams("invoice", FapiaoPic == null ? "-1" : FapiaoPic.toString())//
+                                                                    .addParams("saleAgreement", ErshouPic.toString())
+                                                                    .addParams("rid", rid)
+                                                                    .addParams("mid", mid)
+                                                                    .addParams("lat", mLatitude.toString())
+                                                                    .addParams("lng", mLongitude.toString())
                                                                     .build()
                                                                     .execute(new StringCallback() {
                                                                         @Override

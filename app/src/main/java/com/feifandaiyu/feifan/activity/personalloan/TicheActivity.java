@@ -281,7 +281,7 @@ public class TicheActivity extends BaseActivity implements BaiduMap.OnMapStatusC
                 hud.show();
 
                 System.out.println(mLatitude + "=====" + mLongitude);
-               String x =  PreferenceUtils.getString(this, "carId");
+               String x =  PreferenceUtils.getString(this, "isNew");
                 if (x.equals("1")){
                     x="0";
                 }else{
@@ -289,7 +289,7 @@ public class TicheActivity extends BaseActivity implements BaiduMap.OnMapStatusC
                 }
                 OkHttpUtils
                         .post()
-                        //http://byu2763230001.my3w.com/pcreateArchivesublic/info/Login/
+                        //http://byu2763230001.my3w.com/pcreateArchivesublic/info/Login/18845599263
                         .url(Constants.URLS.BASEURL + "LiftCar/index")
                         .addParams("carId", PreferenceUtils.getString(this, "carId"))
                         .addParams("lat", mLatitude.toString())

@@ -149,7 +149,7 @@ public class VideoSlideFromBottomPopup extends BasePopupWindow implements View.O
 
             .setEnablePixelCompress(true)
 
-            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
             .setCheckNumMode(false)
             .setCompressQuality(100) // 图片裁剪质量,默认无损
             .setImageSpanCount(4) // 每行个数

@@ -28,14 +28,12 @@
                 android:textSize="16sp"/>
 
             <EditText
-                android:id="@+id/et_gps_number"
+                android:id="@+id/et_gps_number1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/tv_gps_number"
-                android:layout_alignBottom="@+id/tv_gps_number"
+
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_toEndOf="@id/tv_gps_number"
                 android:background="@null"
                 android:hint="请输入GPS设备号"
                 android:singleLine="true"
@@ -45,12 +43,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0.8dp"
-                android:layout_below="@id/tv_gps_number"
                 android:layout_marginTop="17dp"
                 android:background="#1a1919"
                 />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +58,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_qiangxian"
+                android:id="@+id/rv_daben1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -70,19 +66,19 @@
                 android:scrollbars="horizontal"/>
 
             <RelativeLayout
-                android:id="@+id/rl_jiaoqiangxianpic"
+                android:id="@+id/rl_jiaoqiangxianpic1"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
                 android:visibility="gone">
 
                 <ImageView
-                    android:id="@+id/iv_jiaoqiangxian"
+                    android:id="@+id/iv_jiaoqiangxian1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
                 <ImageView
-                    android:id="@+id/iv_del_jiaoqiangxian"
+                    android:id="@+id/iv_del_jiaoqiangxian1"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="center"
@@ -96,6 +92,67 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/text_bg"
+                android:gravity="center"
+                android:text="大本照片"
+                android:textColor="#666666"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_fapiao1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:background="#D8D9D8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/custom_qiangxian1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_fapiaopic1"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_fapiao1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/iv_del_fapiao1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="center"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/cha"
+
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_fapiao1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -112,67 +169,6 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/ll_fapiao"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="30dp"
-            android:background="#D8D9D8"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_fapiao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:overScrollMode="never"
-                android:scrollbars="horizontal"/>
-
-            <RelativeLayout
-                android:id="@+id/rl_fapiaopic"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="10dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/iv_fapiao"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-                <ImageView
-                    android:id="@+id/iv_del_fapiao"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="center"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/cha"
-
-                    />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_fapiao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            >
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/text_bg"
-                android:gravity="center"
-                android:text="车发票"
-                android:textColor="#666666"/>
-        </RelativeLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="30dp"
@@ -180,7 +176,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_shangxian"
+                android:id="@+id/custom_shangxian1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -201,7 +197,7 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/text_bg"
                 android:gravity="center"
-                android:text="商险"
+                android:text="商业险"
                 android:textColor="#666666"/>
         </RelativeLayout>
 
@@ -213,77 +209,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_baoxianfapiao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:overScrollMode="never"
-                android:scrollbars="horizontal"/>
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            >
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/text_bg"
-                android:gravity="center"
-                android:text="保险发票"
-                android:textColor="#666666"/>
-        </RelativeLayout>
-
-
-
-        <LinearLayout
-            android:id="@+id/ll_xieyi"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="30dp"
-            android:background="#D8D9D8"
-            >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_xieyi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:overScrollMode="never"
-                android:scrollbars="horizontal"/>
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_xieyi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            >
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/text_bg"
-                android:gravity="center"
-                android:text="二手车买卖协议"
-                android:textColor="#666666"/>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="30dp"
-            android:background="#D8D9D8"
-            >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_fengdang"
+                android:id="@+id/custom_fengdang1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -308,7 +234,9 @@
                 android:textColor="#666666"/>
         </RelativeLayout>
 
+
         <LinearLayout
+            android:id="@+id/ll_xieyi1"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="30dp"
@@ -316,7 +244,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_chepaihao"
+                android:id="@+id/custom_chepaihao1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -326,6 +254,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_xieyi1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -337,7 +266,7 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/text_bg"
                 android:gravity="center"
-                android:text="车牌号和设备合影"
+                android:text="车牌号设备合影"
                 android:textColor="#666666"/>
         </RelativeLayout>
 
@@ -349,7 +278,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_anzhuang"
+                android:id="@+id/custom_anzhuang1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -382,7 +311,73 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_heying"
+                android:id="@+id/custom_kehu1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/text_bg"
+                android:gravity="center"
+                android:text="客户合影照"
+                android:textColor="#666666"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:background="#D8D9D8"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/custom_ershou1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/text_bg"
+                android:gravity="center"
+                android:text="二手车买卖协议"
+                android:textColor="#666666"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:background="#D8D9D8"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/custom_xingshizheng1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -404,11 +399,12 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/text_bg"
                 android:gravity="center"
-                android:text="客户合影照"
+                android:text="交强险保单"
                 android:textColor="#666666"/>
         </RelativeLayout>
+
         <LinearLayout
-            android:id="@+id/ll_hegezheng"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="30dp"
@@ -416,7 +412,7 @@
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/custom_hegezheng"
+                android:id="@+id/custom_baoxianfapiao1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -426,9 +422,10 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_hegezheng"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:layout_marginTop="8dp"
             >
 
@@ -438,55 +435,32 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/text_bg"
                 android:gravity="center"
-                android:text="税完证明"
+                android:text="保险发票"
                 android:textColor="#666666"/>
         </RelativeLayout>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="30dp"
             android:background="#D8D9D8"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
             >
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_daben"
-                android:layout_width="wrap_content"
+                android:id="@+id/custom_fapiao1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:overScrollMode="never"
                 android:scrollbars="horizontal"/>
 
-            <RelativeLayout
-                android:id="@+id/rl_daben"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="10dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/iv_daben"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-                <ImageView
-                    android:id="@+id/iv_del_daben"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="center"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/cha"
-
-                    />
-
-            </RelativeLayout>
-
         </LinearLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:layout_marginTop="8dp"
             >
 
@@ -496,7 +470,7 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/text_bg"
                 android:gravity="center"
-                android:text="大本"
+                android:text="发票"
                 android:textColor="#666666"/>
         </RelativeLayout>
         <LinearLayout
@@ -516,85 +490,100 @@
                 />
 
             <TextView
-                android:id="@+id/tv_choose_office"
+                android:id="@+id/tv_choose_office1"
                 style="@style/TextView_choose"
                 />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_chepai"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/item_bg"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
-            <TextView
-                style="@style/TextView_left"
-                android:text="车辆牌照:"
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/bmapView1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clickable="true"
                 />
 
-            <TextView
-                android:id="@+id/et_chepai_num"
-                style="@style/EditText_input"
-                android:hint="请输入"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_chejiahao"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/item_bg"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView_left"
-                android:text="车架号:"
-                />
-
-            <com.chaychan.viewlib.PowerfulEditText
-                android:id="@+id/et_chejia_num"
-                style="@style/EditText_input"
-                android:layout_marginRight="10dp"
-                android:hint="请输入"
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/item_bg"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView_left"
-                android:text="保单扫描"
-                />
-
-            <TextView
-                android:id="@+id/et_customer_name"
-                style="@style/EditText_input"
-                android:text="未扫描"
-                android:layout_marginRight="0dp"
-                android:layout_weight="0.8"
-                />
+            <View
+                android:id="@+id/view_center1"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"/>
 
             <ImageView
-                android:id="@+id/cemera1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.3"
-                android:src="@drawable/zhaoxiang"/>
+                android:id="@+id/img_location_point1"
+                android:layout_width="12dp"
+                android:layout_height="30dp"
+                android:layout_above="@id/view_center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/map_pin"/>
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/img_location_back_origin1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/rl_location1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="18dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/back_origin_normal"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_location1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/location_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="6dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_location1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/location"/>
+
+                        <TextView
+                            android:id="@+id/tv_addr1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="地址:"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
 
 
     </LinearLayout>

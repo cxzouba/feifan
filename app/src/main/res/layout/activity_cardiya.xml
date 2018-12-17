@@ -241,6 +241,7 @@
 
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/ll_xieyi"
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -259,6 +260,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rl_xieyi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -408,6 +410,7 @@
                 android:textColor="#666666"/>
         </RelativeLayout>
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/ll_hegezheng"
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -426,6 +429,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rl_hegezheng"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -500,6 +504,7 @@
                 android:textColor="#666666"/>
         </RelativeLayout>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -524,6 +529,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/ll_chepai"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -544,6 +550,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/ll_chejiahao"
             android:layout_width="match_parent"
             android:layout_height="50dp"

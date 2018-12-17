@@ -157,7 +157,7 @@ public class MyApplication extends MultiDexApplication {
         FunctionOptions options = new FunctionOptions.Builder().create();
         options.setType(FunctionConfig.TYPE_IMAGE);
         options.setCompress(true);
-        options.setGrade(Luban.THIRD_GEAR);
+        options.setGrade(Luban.FIRST_GEAR);
         PictureConfig.getInstance().init(options);
 
     }

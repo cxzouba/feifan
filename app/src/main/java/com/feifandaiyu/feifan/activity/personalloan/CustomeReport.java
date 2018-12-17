@@ -42,6 +42,7 @@ import com.feifandaiyu.feifan.adapter.GridImageAdapter;
 import com.feifandaiyu.feifan.base.BaseActivity;
 import com.feifandaiyu.feifan.bean.CustomeReportBean;
 import com.feifandaiyu.feifan.bean.MsgBean;
+import com.feifandaiyu.feifan.bean.UserResultBean;
 import com.feifandaiyu.feifan.config.Constants;
 import com.feifandaiyu.feifan.ocr.CameraActivity;
 import com.feifandaiyu.feifan.ocr.RecognizeService;
@@ -297,7 +298,7 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -412,7 +413,7 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
                             .setPreviewBottomBgColor(previewBottomBgColor) //预览图片底部背景色
                             .setEnablePixelCompress(true)
                             .setBottomBgColor(bottomBgColor) //图片列表底部背景色
-                            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+                            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
                             .setCheckNumMode(false)
                             .setCompressQuality(100) // 图片裁剪质量,默认无损
                             .setImageSpanCount(4) // 每行个数
@@ -851,10 +852,10 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
                         String json = response;
                         Gson gson = new Gson();
 
-                        CustomeReportBean customeReportBean = null;
+                        UserResultBean customeReportBean = null;
 
                         try {
-                            customeReportBean = gson.fromJson(json, CustomeReportBean.class);
+                            customeReportBean = gson.fromJson(json, UserResultBean.class);
                         } catch (JsonSyntaxException e) {
                             MyToast.show(CustomeReport.this, "服务器连接失败");
                         }
@@ -872,7 +873,10 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
 //                            }
 
                             // TODO: 2018/8/29 id price
-                            startActivity(new Intent(CustomeReport.this, StartHomeVisitActivity.class));
+                            PreferenceUtils.setString(CustomeReport.this, "userId", customeReportBean.getList().getUserId());
+                            Intent intent = new Intent(CustomeReport.this, StartHomeVisitActivity.class);
+                            startActivity(intent);
+
                             finish();
 //                            MyToast.show(CustomeReport.this, "请等待征信审核...");
                             int enterAnim6 = R.anim.next_enter;// 进入的activity对应的动画资源
@@ -882,7 +886,11 @@ public class CustomeReport extends BaseActivity implements View.OnClickListener 
 
                         } else {
                             upLoadCount = 0;
-                            MyToast.show(CustomeReport.this, customeReportBean.getMsg());
+                            try {
+                                MyToast.show(CustomeReport.this, customeReportBean.getCode());
+                            }catch (Exception e){
+                                MyToast.show(CustomeReport.this,"证件重复");
+                            }
                         }
 
 

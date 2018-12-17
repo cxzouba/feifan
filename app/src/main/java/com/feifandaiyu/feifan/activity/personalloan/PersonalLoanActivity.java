@@ -153,7 +153,7 @@ public class PersonalLoanActivity extends AppCompatActivity {
             firstVisiblePosition = lvPersonaloan.getFirstVisiblePosition();
 
             PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
-            PreferenceUtils.setString(PersonalLoanActivity.this, "isNew", list1.get(positon).getIsnew());
+            PreferenceUtils.setString(PersonalLoanActivity.this,  "isNew", list1.get(positon).getIsnew());
 
             startActivity(new Intent(PersonalLoanActivity.this, HegePicActivity.class));
 
@@ -265,7 +265,10 @@ public class PersonalLoanActivity extends AppCompatActivity {
                                         }else   if ( list1.get(positon).getCarloan()==1){
                                             //车抵贷二手车
                                             //++++++++++++++++++++++++
-                                            Intent intent = new Intent(PersonalLoanActivity.this,DaiAfterActivity.class);
+                                            PreferenceUtils.setString(PersonalLoanActivity.this, "carType", list1.get(positon).getIsnew());
+                                            PreferenceUtils.setString(PersonalLoanActivity.this, "carId", list1.get(positon).getCarid());
+                                            PreferenceUtils.setString(PersonalLoanActivity.this, "mid", list1.get(positon).getMid());
+                                            Intent intent = new Intent(PersonalLoanActivity.this,CarDiYaActivity.class);
                                             startActivity(intent);
                                         }
 

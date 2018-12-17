@@ -497,7 +497,7 @@ public class UpLoadCusomerVideoActivity extends BaseActivity implements View.OnC
             .setCropH(200) // cropH-->裁剪高度 值不能小于100 如果值大于图片原始宽高 将返回原图大小
             .setMaxB(1024 * 1024 * 3) // 压缩最大值 例如:200kb  就设置202400，202400 / 1024 = 200kb
             .setEnablePixelCompress(true)
-            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
             .setCheckNumMode(false)
             .setCompressQuality(100) // 图片裁剪质量,默认无损
             .setImageSpanCount(4) // 每行个数

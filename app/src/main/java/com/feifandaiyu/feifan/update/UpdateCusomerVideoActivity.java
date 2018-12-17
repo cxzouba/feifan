@@ -327,7 +327,7 @@ public class UpdateCusomerVideoActivity extends BaseActivity implements View.OnC
 
             if (carLoan.equals("1")) {
 
-                mCaptureIv.setText("        请问您是XXX（先生/女士）吗？  您的身份证号码为XXX吗，您在泰隆银行自愿申请交易贷业务，您确定吗？" +
+                mCaptureIv.setText("        请问您是XXX（/女士）吗？  您的身份证号码为XXX吗，您在泰隆银行自愿申请交易贷业务，您确定吗？" +
                         "XXX（先生/女士），您在泰隆银行自愿申请汽车分期付款业务，您确定吗？" +
                         "XXX（先生/女士），您在非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司分期付款购买一辆XXX品牌，车价为XXX元的汽车，并向泰隆银行申请购车分期业务和接受非凡贷遇（杭州）融资租赁有限公司黑龙江分公司公司的担保，您确定吗？ 该笔分期付款业务贷款额为XXX，月还款为XXX元，共计还款期限为XXX期， 您确定吗？" +
                         "XXX（先生/女士）， 以上面谈是您的真实意愿表达，并愿意承担相应的法律责任， 您确定吗？");
@@ -466,7 +466,7 @@ public class UpdateCusomerVideoActivity extends BaseActivity implements View.OnC
             .setCropH(200) // cropH-->裁剪高度 值不能小于100 如果值大于图片原始宽高 将返回原图大小
             .setMaxB(1024 * 1024 * 3) // 压缩最大值 例如:200kb  就设置202400，202400 / 1024 = 200kb
             .setEnablePixelCompress(true)
-            .setGrade(Luban.THIRD_GEAR) // 压缩档次 默认三档
+            .setGrade(Luban.FIRST_GEAR) // 压缩档次 默认三档
             .setCheckNumMode(false)
             .setCompressQuality(100) // 图片裁剪质量,默认无损
             .setImageSpanCount(4) // 每行个数

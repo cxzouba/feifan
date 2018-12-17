@@ -157,7 +157,7 @@
             android:layout_toEndOf="@+id/tv_carname"
             android:background="@drawable/fuyi"
             android:gravity="center"
-            android:text="落户"
+            android:text="过户"
             android:textColor="#F5776B"
             android:textSize="15sp"
             android:visibility="gone"/>
