@@ -2250,7 +2250,7 @@ public class CarDiYaActivity extends BaseActivity {
                             if (bean != null) {
                                 words = bean.getWords_result().toString();
                                 tvSaomiao.setText("已扫描");
-//                                MyToast.show(DiyaPicNewActivity.this, words);
+                                MyToast.show(CarDiYaActivity.this, bean.getWords_result().get(0).toString()+bean.getWords_result().get(1).toString());
                                 LogUtils.e(bean.toString());
                                 LogUtils.e(words);
                             }
